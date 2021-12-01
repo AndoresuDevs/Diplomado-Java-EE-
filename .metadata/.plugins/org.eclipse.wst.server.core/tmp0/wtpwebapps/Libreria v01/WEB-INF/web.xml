@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN CASO DE ERROR PRUEBA MODIFICANDO EL "javaee" del xmlns por "j2ee                       AQUI MERO"                         AQUI -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/j2ee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>Libreria v01</display-name>
+  <welcome-file-list>
+    <welcome-file>MostrarLibros.jsp</welcome-file>
+    <welcome-file>FormularioInsertarLibro.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>MostrarLibros.jsp</welcome-file>
+    <welcome-file>FormularioInsertarLibro.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

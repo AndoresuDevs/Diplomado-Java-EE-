@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\Users\Andre\DIPLOMADO JAVA EE 8\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3746084758.index
+\Libreria v01\src\main\java
+C:\Users\Andre\DIPLOMADO JAVA EE 8\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3300562300.index
+\Libreria v01\src\main\java
