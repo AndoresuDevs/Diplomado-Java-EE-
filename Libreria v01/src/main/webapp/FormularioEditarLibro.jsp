@@ -18,19 +18,19 @@
 			
 			<form action="EditarLibro.jsp" method="GET">
 				<p><label class="txt" for="ID">ID:</label><br>
-				<input class="inputs" id="ID" type="text" name="idLibro" value="<%=l.getNumero() %>"  disabled/></p>	
+				<input class="inputs" id="ID" type="text" name="idLibro" value="<%=l.getnum_lib() %>"  disabled/></p>	
 				
 				<p><label class="txt" for="ISBN">ISBN:</label><br>
-				<input class="inputs" id="ISBN" type="text" name="ISBNLibro" value="<%=l.getISBN() %>"/></p>	
+				<input class="inputs" id="ISBN" type="text" name="ISBNLibro" value="<%=l.getisbn_lib() %>"/></p>	
 						
 				<p><label class="txt" for="Titulo">Titulo: </label><br>
-				<input class="inputs" id="Titulo" type="text" name="nomLibro" value="<%=l.getTitulo() %>"/></p>
+				<input class="inputs" id="Titulo" type="text" name="nomLibro" value="<%=l.gettit_lib() %>"/></p>
 				
 				<p><label class="txt" for="Categoria">Categoria: </label><br>
-				<input class="inputs" id="Categoria" type="text" name="catLibro" value="<%=l.getCategoria() %>"/></p>
+				<input class="inputs" id="Categoria" type="text" name="catLibro" value="<%=l.getcat_lib() %>"/></p>
 				
 				<p><label class="txt" for="Precio">Precio: </label><br>
-				<input class="inputs" id="Precio" type="text" name="preLibro" value="<%=l.getPrecio() %>"/></p>
+				<input class="inputs" id="Precio" type="text" name="preLibro" value="<%=l.getpre_lib() %>"/></p>
 				
 				<input class="boton" onClick="editar();" type="submit" value="ENVIAR" name="insertar"><br>
 				

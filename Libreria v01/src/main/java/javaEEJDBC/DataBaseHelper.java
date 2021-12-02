@@ -1,5 +1,6 @@
 package javaEEJDBC;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -11,17 +12,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 public class DataBaseHelper<T> extends Libro{
 
 	private static final String DRIVER ="com.mysql.cj.jdbc.Driver";
 	private static final String URL ="jdbc:mysql://localhost/libreria";
 	private static final String USUARIO ="JavaEE";
 	private static final String CLAVE ="12345";
+	private static final Logger log = LogManager.getLogger(DataBaseHelper.class.getPackage().getName());
 	
 	Connection con=null;
 	Statement stm=null;
 	
 	public DataBaseHelper() throws DataBaseException{
+		log.setLevel(Level.DEBUG);
+		//File f = new File(this.);
+		//URI fc = f.toURI();
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL,USUARIO,CLAVE);
@@ -103,6 +112,8 @@ public class DataBaseHelper<T> extends Libro{
 			}
 		}catch(SQLException|InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			//e.printStackTrace();
+			log.debug("Error en el DataBase Helper: "+e.getMessage());
+			
 			System.out.println("Error al seleccionar registros: "+e.getMessage());
 			throw new DataBaseException("Error al leer registros");
 		}

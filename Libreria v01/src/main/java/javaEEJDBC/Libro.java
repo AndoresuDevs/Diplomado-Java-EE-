@@ -87,7 +87,7 @@ public class Libro {
 	
 	
 	public List<Libro> buscarTodos()throws DataBaseException {
-		String SQL ="SELECT * FROM libros";
+		String SQL ="SELEC * FROM libros";
 		DataBaseHelper  dbh = new DataBaseHelper();
 		List<Libro>ListaDeLibros = dbh.seleccionarRegistros(SQL, Libro.class);
 		dbh.cerrarObjetos();

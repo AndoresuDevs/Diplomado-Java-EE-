@@ -13,4 +13,14 @@
     <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="javaEEJDBC.DataBaseException"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.core.appender.ConsoleAppender"/>
+    <fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.core.Appender"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.core.appender.FileAppender"/>
+    <fullyQualifiedTypeName name="java.util.logging.Logger"/>
+    <fullyQualifiedTypeName name="org.apache.log4j.LogManager"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.core.Logger"/>
+    <fullyQualifiedTypeName name="org.apache.log4j.ConsoleAppender"/>
+    <fullyQualifiedTypeName name="org.apache.log4j.Level"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
 </qualifiedTypeNameHistroy>
