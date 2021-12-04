@@ -1,5 +1,6 @@
 package javaEEJDBC;
 
+import java.io.File;
 import java.util.List;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -66,7 +67,7 @@ public class Libro {
 
 	
 	
-	public List<Integer> buscarLasCategorias() throws DataBaseException{
+	public static List<Integer> buscarLasCategorias() throws DataBaseException{
 		String consultaSQL="SELECT DISTINCT(cat_lib) FROM libros";
 		DataBaseHelper dbh = new DataBaseHelper();
 		List<Integer> ListaDeCategorias=dbh.seleccionarRegistros(consultaSQL,Integer.class);
@@ -86,8 +87,8 @@ public class Libro {
 	}
 	
 	
-	public List<Libro> buscarTodos()throws DataBaseException {
-		String SQL ="SELEC * FROM libros";
+	public static List<Libro> buscarTodos()throws DataBaseException {
+		String SQL ="SELECT * FROM libros";
 		DataBaseHelper  dbh = new DataBaseHelper();
 		List<Libro>ListaDeLibros = dbh.seleccionarRegistros(SQL, Libro.class);
 		dbh.cerrarObjetos();
@@ -122,7 +123,8 @@ public class Libro {
 		System.out.println(filas);
 	}
 	
-	public List<Libro> buscarPorCategoria(int cat) throws DataBaseException {
+	public static List<Libro> buscarPorCategoria(int cat) throws DataBaseException {
+		System.out.println(new File("Reflection, busca la ruta de esta cosa y la imprime").getAbsolutePath()); ////OTRO EJEMPLO DE REFLECTION 
 		String SQL ="SELECT * FROM libros WHERE cat_lib="+cat;
 		DataBaseHelper dbh = new DataBaseHelper();
 		List<Libro>ListaDeLibros = dbh.seleccionarRegistros(SQL, Libro.class);

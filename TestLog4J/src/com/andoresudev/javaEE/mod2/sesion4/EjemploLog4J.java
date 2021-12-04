@@ -18,6 +18,7 @@ public class EjemploLog4J {
 		PatternLayout patron = new PatternLayout("%m %n");
 		ConsoleAppender consola = new ConsoleAppender();
 		consola.setLayout(patron);
+		 
 		logger.addAppender(consola);
 		logger.setLevel(Level.INFO); //SETEARLE UN NIVEL ES COMO PONER EL MINIMO, SOLO MUESTRA DE ESE HACIA ARRIBA
 		

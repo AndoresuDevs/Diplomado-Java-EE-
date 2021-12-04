@@ -18,19 +18,17 @@
 	
 	<a href="FormularioInsertarLibro.jsp">Insertar Nuevo Libro</a>
 	
-	<form action="MostrarLibros.jsp" method="GET">
+	<form action="ControladorLibros.do" method="GET">
 	
 	<p class="navegar">
 		<br><label>Categorias disonibles: </label>
 		<select name="categoria">
 		<option>Seleccionar</option>
 		<%
-		try{
-			//ArrayList<Integer>Categorias = new ArrayList<Integer>();
-			//Categorias = new Libro().buscarLasCategorias();
-			 
+		try{ 
 			List<Categoria>Categorias = new ArrayList<Categoria>();
-			Categorias = new Categoria().buscarCategorias();
+			Categorias = Categoria.buscarCategorias();
+			Categorias = (List<Categoria>)request.getAttribute("ListaDeCategorias");
 			for(Categoria c: Categorias){
 				%>
 				<option value="<%=c.getid_cat()%>"> <%=c.getnom_cat()%> </option> 
@@ -64,21 +62,13 @@
 			<tbody>
 				<tr>
 					<%
-					List<Categoria>Categorias = new ArrayList<Categoria>();
-					Categorias = new Categoria().buscarCategorias();
+					List<Categoria>Categorias = null;//new ArrayList<Categoria>();
+					Categorias = Categoria.buscarCategorias();
 					List<Libro> Lista=null;
 					if(request.getParameter("categoria")==null || request.getParameter("categoria").equals("Seleccionar")){
-						
-						try{
-							 Lista = new Libro().buscarTodos();
-						}catch(DataBaseException e)
-						{
-							System.out.println("Entro la excepcion :D");
-							out.println(e.getMessage());  
-						}
+						Lista = (List<Libro>)request.getAttribute("ListaDeLibros");
 					}else{
-						int  Cat = Integer.parseInt(request.getParameter("categoria"));
-						Lista=new Libro().buscarPorCategoria(Cat);
+						Lista = (List<Libro>)request.getAttribute("ListaPorCategoria");
 					}
 					
 					try{

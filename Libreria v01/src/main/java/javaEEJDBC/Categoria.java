@@ -39,7 +39,7 @@ public class Categoria {
 
 	//CAMBIAR LOS ARRAYLIST POR LIST (SOLO LO PRIMERO Y EL RETORNO)
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<Categoria> buscarCategorias() throws DataBaseException {
+	public static List<Categoria> buscarCategorias() throws DataBaseException {
 		String consultaSQL="SELECT * FROM categorias";
 		DataBaseHelper dbh = new DataBaseHelper();
 		List <Categoria>ListaDeCategorias=dbh.seleccionarRegistros(consultaSQL, Categoria.class);
