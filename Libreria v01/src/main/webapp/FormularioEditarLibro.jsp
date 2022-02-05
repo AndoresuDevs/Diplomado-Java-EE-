@@ -15,8 +15,7 @@
 	<body background="img/formulario.jpg">
 		<div class="formulario">
 			<h1>Formulario Editar Libro</h1>
-			
-			<form action="EditarLibro.jsp" method="GET">
+			<form action="EditarLibro.do" method="GET">
 				<p><label class="txt" for="ID">ID:</label><br>
 				<input class="inputs" id="ID" type="text" name="idLibro" value="<%=l.getnum_lib() %>"  disabled/></p>	
 				
@@ -34,10 +33,7 @@
 				
 				<input class="boton" onClick="editar();" type="submit" value="ENVIAR" name="insertar"><br>
 				
-				<p class="navegar"><a href="MostrarLibros.jsp">Cancelar</a></p>
-				
-				
-					
+				<p class="navegar"><a href="MostrarLibros.do">Cancelar</a></p>		
 			</form>
 		</div>
 	</body>

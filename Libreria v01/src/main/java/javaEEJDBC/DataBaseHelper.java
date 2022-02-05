@@ -67,8 +67,6 @@ public class DataBaseHelper<T> extends Libro{
 		try {
 			if(stm!=null) stm.close();
 			if(con!=null) con.close();
-			
-			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -85,14 +83,16 @@ public class DataBaseHelper<T> extends Libro{
 			while(filas.next()) {
 				
 				T objeto = (T) Class.forName( //FORNAME BUSCA LA RUTA DONDE ESTA LA CLASE QUE SE LLAME IGUAL
-						clase.getName()).getDeclaredConstructor().newInstance(); //LUEGO SE TRAE SU CONTRUCTOR Y SE INSTANCIA
+						clase.getName()).getDeclaredConstructor().newInstance();//LUEGO SE TRAE SU 
+																				//CONTRUCTOR Y SE INSTANCIA
 				Method[]metodos=objeto.getClass().getDeclaredMethods();
 				
 				for(int i=0; i<metodos.length;i++) {
 					if(metodos[i].getName().startsWith("set")) {
 						
 						//IF POR SI NUESTOR VALOR ES INTEGER
-						if((metodos[i].getName().substring(3)).equals("num_lib") || metodos[i].getName().substring(3).equals("cat_lib")|| metodos[i].getName().substring(3).equals("id_cat")) {
+						if((metodos[i].getName().substring(3)).equals("num_lib") || metodos[i].getName().substring(3)
+								.equals("cat_lib")|| metodos[i].getName().substring(3).equals("id_cat")) {
 							metodos[i].invoke(objeto, filas.getInt(metodos[i].getName().substring(3)));
 						}else
 						//IF POR SI NUESTRO VALOR ES FLOTANTE
@@ -102,7 +102,8 @@ public class DataBaseHelper<T> extends Libro{
 							metodos[i].invoke(objeto, filas.getString(metodos[i].getName().substring(3)));
 						}
 						
-					}else if(objeto.getClass().getName().equals("java.lang.Integer")) { //PROBABLEMENTE NO SIRVE ESTE ELSE IF
+					}else if(objeto.getClass().getName().equals("java.lang.Integer")) { //PROBABLEMENTE NO 
+						//SIRVE ESTE ELSE IF
 						objeto = (T)(""+filas.getInt("cat_lib")); //EFECTIVAMENTE NO SIRVE ESTA VALIDACION
 					}		
 				}
@@ -134,8 +135,6 @@ public class DataBaseHelper<T> extends Libro{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
 		this.cerrarObjetos();
 		return filas;
 	}

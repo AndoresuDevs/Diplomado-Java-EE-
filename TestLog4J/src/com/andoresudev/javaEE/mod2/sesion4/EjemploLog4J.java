@@ -20,7 +20,8 @@ public class EjemploLog4J {
 		consola.setLayout(patron);
 		 
 		logger.addAppender(consola);
-		logger.setLevel(Level.INFO); //SETEARLE UN NIVEL ES COMO PONER EL MINIMO, SOLO MUESTRA DE ESE HACIA ARRIBA
+		logger.setLevel(Level.INFO); //SETEARLE UN NIVEL ES COMO PONER EL MINIMO, 
+									//SOLO MUESTRA DE ESE HACIA ARRIBA
 		
 		//ESTE ES EL ORDER DE JERARQUIA DE NIVEL
 		logger.fatal("Error Fatal");
@@ -28,9 +29,7 @@ public class EjemploLog4J {
 		logger.warn("Error Warn");
 		logger.info("Warn Info");
 		logger.debug("Error Debug");
-		
-		
-		
+		//ESTE ES EL ERROR MAS SIMPLE Y ARRIBA LOS GRAVES
 	}
 
 }

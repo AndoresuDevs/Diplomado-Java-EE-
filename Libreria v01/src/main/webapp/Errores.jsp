@@ -11,7 +11,8 @@
 	
 		<% String motivo= request.getParameter("motivo"); %>
 		<div class=formulario>
-		<h1>El error se solucionará una vez que nuestro colaborador termine su hamburguesa</h1>
+		<h1>El error se solucionará una vez que nuestro colaborador termine 
+		su hamburguesa</h1>
 		<h4><%=motivo%></h4>
 		<br>
 		<img src="img/error2.jpg" width="340px"/>
@@ -20,3 +21,6 @@
 		</div>
 	</body>
 </html>
+
+
+

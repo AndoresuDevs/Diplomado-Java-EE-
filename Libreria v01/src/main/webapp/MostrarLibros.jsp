@@ -5,6 +5,9 @@
 <%@page import="javaEEJDBC.Libro"%>
 <%@page import="javaEEJDBC.Categoria"%>
 <%@page import="javaEEJDBC.DataBaseException"%>
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
 <html lang="es">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
@@ -24,20 +27,12 @@
 		<br><label>Categorias disonibles: </label>
 		<select name="categoria">
 		<option>Seleccionar</option>
-		<%
-		try{ 
-			List<Categoria>Categorias = new ArrayList<Categoria>();
-			Categorias = Categoria.buscarCategorias();
-			Categorias = (List<Categoria>)request.getAttribute("ListaDeCategorias");
-			for(Categoria c: Categorias){
-				%>
-				<option value="<%=c.getid_cat()%>"> <%=c.getnom_cat()%> </option> 
-				<%
-			}	
-		}catch(Exception e){
-			e.printStackTrace();
-		}	 
-		%>
+			
+			<c:forEach var="cat" items="${ListaDeCategorias}">
+				<option value ="${cat.getid_cat()}">${cat.getnom_cat()}</option>
+			</c:forEach>
+			
+				
 		</select>
 		<input type="submit" value="Filtrar" /> 
 	</p>
@@ -59,43 +54,27 @@
 					<th>Modificar</th>
 				</tr>
 			</thead>
+			
 			<tbody>
-				<tr>
-					<%
-					List<Categoria>Categorias = null;//new ArrayList<Categoria>();
-					Categorias = Categoria.buscarCategorias();
-					List<Libro> Lista=null;
-					if(request.getParameter("categoria")==null || request.getParameter("categoria").equals("Seleccionar")){
-						Lista = (List<Libro>)request.getAttribute("ListaDeLibros");
-					}else{
-						Lista = (List<Libro>)request.getAttribute("ListaPorCategoria");
-					}
-					
-					try{
-						
-					
-					for(Libro l: Lista){ %>
-					<td><%=l.getnum_lib()%></td>
-					<td><%=l.getisbn_lib()%></td>
-					<td><%=l.gettit_lib()%></td>
-					
-				 	 
-				 	<%for(Categoria c: Categorias){
-				 		if(c.getid_cat()==l.getcat_lib()){%>
-				 			<td><%=c.getnom_cat()%></td> 
-				 	<%	}
-				 	} %>
-					
-						
-					<td><%=l.getpre_lib()%></td>
-					<td><a href="BorrarLibro.jsp?id=<%=l.getnum_lib()%>">Borar</a></td>
-					<td><a href="FormularioEditarLibro.jsp?id=<%=l.getnum_lib()%>">Editar</a></td>
+				 
+					<c:forEach var="lib" items="${ListaDeLibros}">
+					<tr>
+						<td>${lib.getnum_lib()}</td>
+						<td>${lib.getisbn_lib()}</td>
+						<td>${lib.gettit_lib()}</td>
+						<c:forEach var="c" items="${ListaDeCategorias}">
+							<c:if test="${c.getid_cat()==lib.getcat_lib()}">
+								<td>${c.getnom_cat()}</td>
+							</c:if>
+						</c:forEach>
+						<td>${lib.getpre_lib()}</td>
+						<td><a href="BorrarLibro.do?id=${lib.getnum_lib()}">Borar</a></td>
+						<td><a href="FormularioEditarLibro.jsp?id=${lib.getnum_lib()}">Editar</a></td>
 					</tr>
-					<%}
-					}catch(NullPointerException e){%>
-						<%//response.sendRedirect("Errores.jsp?motivo="+e.getMessage());%>
-						<%out.println("ERROR, LA LISTA DE LIBROS ESTA VACIA"); %>
-					<% }%>
+					</c:forEach>
+			
+				
+					
 				
 			</tbody>
 		</table>

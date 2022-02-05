@@ -10,9 +10,10 @@
 	<body background="img/formulario.jpg">
 		<div class="formulario">
 			<h1>Formulario Alta Libro</h1>
-			<form>
+			<form action="Insertar.do" method="GET">
+			
 				<p><label class="txt" for="ISBN">ISBN:</label><br>
-				<input class="inputs" id="ISBN" type="text" name="ISBNLibro"/></p>	
+				<input class="inputs" id="ISBN" type="text" name="ISBN"/></p>	
 						
 				<p><label class="txt" for="Titulo">Titulo: </label><br>
 				<input class="inputs" id="Titulo" type="text" name="nomLibro"/></p>
@@ -23,9 +24,9 @@
 				<p><label class="txt" for="Precio">Precio: </label><br>
 				<input class="inputs" id="Precio" type="text" name="preLibro"/></p>
 				
-				<input class="boton" onClick="validar();" type="submit" value="ENVIAR" name="insertar"><br>
+				<input class="boton"  type="submit" value="Insertar" name="insertar"><br>
 				
-				<p class="navegar"><a href="MostrarLibros.jsp">Volver al Listado de Libros</a></p>
+				<p class="navegar"><a href="MostrarLibros.do">Volver al Listado de Libros</a></p>
 					
 			</form>
 		</div>

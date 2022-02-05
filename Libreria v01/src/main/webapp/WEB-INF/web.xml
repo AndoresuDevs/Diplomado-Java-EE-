@@ -3,9 +3,10 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/j2ee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>Libreria v01</display-name>
   <welcome-file-list>
-    <welcome-file>MostrarLibros.do</welcome-file>
+    <welcome-file>MostrarLibros.do</welcome-file> <!-- Index o archivo de arranque -->
   </welcome-file-list>
   
+  <!-- Mapeo del Servlet -->
   <servlet>
   	<servlet-name>ControladorLibros</servlet-name>
   	<servlet-class>aplicacion.ControladorLibros</servlet-class>
