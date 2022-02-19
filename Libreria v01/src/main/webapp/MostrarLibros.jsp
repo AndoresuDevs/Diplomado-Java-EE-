@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<%@page import="javaEEJDBC.DataBaseException"%>
 <%@page import ="java.util.List"%>
 <%@page import ="java.util.ArrayList"%>
 <%@page import="javaEEJDBC.Libro"%>
 <%@page import="javaEEJDBC.Categoria"%>
-<%@page import="javaEEJDBC.DataBaseException"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
@@ -12,36 +12,25 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
 	<link rel="stylesheet" href="css/tablas.css">
-	<script type="text/javascript" src="js/validacionMostrarLibro.js"></script>
 	<title>Lista de Libros</title>
 </head>
 <body background="img/formulario.jpg">
-
 	<div class=contenedor>
-	
 	<a href="FormularioInsertarLibro.jsp">Insertar Nuevo Libro</a>
-	
 	<form action="ControladorLibros.do" method="GET">
-	
 	<p class="navegar">
 		<br><label>Categorias disonibles: </label>
 		<select name="categoria">
-		<option>Seleccionar</option>
-			
+		<option value="Seleccionar">Seleccionar</option>
 			<c:forEach var="cat" items="${ListaDeCategorias}">
 				<option value ="${cat.getid_cat()}">${cat.getnom_cat()}</option>
-			</c:forEach>
-			
-				
+			</c:forEach>		
 		</select>
 		<input type="submit" value="Filtrar" /> 
 	</p>
 	</form>
-	
-	<br><br>
-		
+	<br><br> 
 	<h2>Lista de libros</h2>
-	
 		<table class="tabla">
 			<thead>
 				<tr>
@@ -54,9 +43,7 @@
 					<th>Modificar</th>
 				</tr>
 			</thead>
-			
 			<tbody>
-				 
 					<c:forEach var="lib" items="${ListaDeLibros}">
 					<tr>
 						<td>${lib.getnum_lib()}</td>
@@ -72,17 +59,9 @@
 						<td><a href="FormularioEditarLibro.jsp?id=${lib.getnum_lib()}">Editar</a></td>
 					</tr>
 					</c:forEach>
-			
-				
-					
-				
 			</tbody>
 		</table>
-	
-		
-		
 	</div>
 	<br><br>
-	
 </body>
 </html>

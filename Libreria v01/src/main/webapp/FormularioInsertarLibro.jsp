@@ -10,7 +10,7 @@
 	<body background="img/formulario.jpg">
 		<div class="formulario">
 			<h1>Formulario Alta Libro</h1>
-			<form action="Insertar.do" method="GET">
+			<form action="InsertarLibro.do" method="GET">
 			
 				<p><label class="txt" for="ISBN">ISBN:</label><br>
 				<input class="inputs" id="ISBN" type="text" name="ISBN"/></p>	
