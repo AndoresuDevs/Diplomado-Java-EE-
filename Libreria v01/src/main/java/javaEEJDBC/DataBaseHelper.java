@@ -91,14 +91,21 @@ public class DataBaseHelper<T> extends Libro{
 					if(metodos[i].getName().startsWith("set")) {
 						
 						//IF POR SI NUESTOR VALOR ES INTEGER
-						if((metodos[i].getName().substring(3)).equals("num_lib") || metodos[i].getName().substring(3)
-								.equals("cat_lib")|| metodos[i].getName().substring(3).equals("id_cat")) {
+						if((metodos[i].getName().substring(3)).equals("num_lib") || 
+							metodos[i].getName().substring(3).equals("cat_lib")|| 
+							metodos[i].getName().substring(3).equals("id_cat") || 
+							metodos[i].getName().substring(3).equals("id_prov"))
+						{
 							metodos[i].invoke(objeto, filas.getInt(metodos[i].getName().substring(3)));
-						}else
+						}
+						else
 						//IF POR SI NUESTRO VALOR ES FLOTANTE
-						if((metodos[i].getName().substring(3)).equals("pre_lib")) {
+						if((metodos[i].getName().substring(3)).equals("pre_lib")) 
+						{
 							metodos[i].invoke(objeto, filas.getFloat(metodos[i].getName().substring(3)));
-						}else {
+						}
+						else 
+						{
 							metodos[i].invoke(objeto, filas.getString(metodos[i].getName().substring(3)));
 						}
 						
@@ -130,6 +137,24 @@ public class DataBaseHelper<T> extends Libro{
 			ps.setInt(3, lib.getcat_lib());
 			ps.setFloat(4, lib.getpre_lib());
 			ps.setInt(5, id);
+			filas=ps.executeUpdate();
+			ps.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		this.cerrarObjetos();
+		return filas;
+	}
+	
+	public int actualizarProveedor(int id, Proveedor prov) {
+		String SQL ="UPDATE proveedores SET nom_prov=?, tel_prov=?, cat_lib=?, pre_lib=? WHERE num_lib=?";
+		int filas=0;
+		try {
+			PreparedStatement ps = con.prepareStatement(SQL);
+			ps.setString(1, prov.getnom_prov());
+			ps.setString(2, prov.gettel_prov());
+			ps.setString(3, prov.getdir_prov());
+			ps.setInt(4, id);
 			filas=ps.executeUpdate();
 			ps.close();
 		}catch(SQLException e) {

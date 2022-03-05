@@ -28,7 +28,11 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="acciones.Accion"/>
-    <fullyQualifiedTypeName name="acciones.InsertarLibroAccion"/>
     <fullyQualifiedTypeName name="acciones.BorrarLibroAccion"/>
     <fullyQualifiedTypeName name="acciones.EditarLibroAccion"/>
+    <fullyQualifiedTypeName name="acciones.FiltrarPorCategoriaAccion"/>
+    <fullyQualifiedTypeName name="acciones.MostrarLibrosAccion"/>
+    <fullyQualifiedTypeName name="acciones.InsertarLibroAccion"/>
+    <fullyQualifiedTypeName name="acciones.FormularioInsertarLibroAccion"/>
+    <fullyQualifiedTypeName name="javaEEJDBC.Proveedor"/>
 </qualifiedTypeNameHistroy>

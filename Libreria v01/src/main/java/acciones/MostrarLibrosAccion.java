@@ -13,31 +13,19 @@ public class MostrarLibrosAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 		
-		List<Libro>ListaDeLibros = null;
-		List<Libro>ListaPorCategorias = null;
 		try {
-			if(request.getParameter("categoria")==null|| request.getParameter("categoria").equals("seleccionar")) {
-				
-				ListaDeLibros= Libro.buscarTodos();
-			}else {
-				System.out.println("PARAMETRO EN MOSTRAR: "+request.getParameter("categoria")+" SI ESTA ENTRANDO LA CATEGORIA QUE QUIERE");
-				int cat = Integer.parseInt(request.getParameter("categoria"));
-				//ListaPorCategorias=Libro.buscarPorCategoria(cat);
-				ListaPorCategorias=Libro.buscarPorCategoria(cat);
-			}
-			
-			//ListaPorCategorias= Libro.buscarPorCategoria(1);
+			List<Libro>ListaDeLibros=Libro.buscarTodos();
 			List<Categoria>ListaDeCategorias= Categoria.buscarCategorias();
 			request.setAttribute("ListaDeLibros", ListaDeLibros);
 			request.setAttribute("ListaDeCategorias", ListaDeCategorias);
-			request.setAttribute("ListaPorCategoria", ListaPorCategorias);				
+			//request.setAttribute("ListaPorCategoria", ListaPorCategorias);				
 		} catch (DataBaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
+		
 		
 		return "MostrarLibros.jsp";
 	}

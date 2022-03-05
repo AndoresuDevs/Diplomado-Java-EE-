@@ -25,6 +25,5 @@
 		//en teoria esto valida que si hay error se quede mostrandolo y si sirve siga el flujo pero lo puse arriba xD
 		//Asi que puedo borrar todo este if y el bolean error
 	}
-	System.out.println("");
 	
 %>
