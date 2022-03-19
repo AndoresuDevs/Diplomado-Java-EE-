@@ -19,6 +19,7 @@ public class MostrarLibrosAccion extends Accion{
 			List<Categoria>ListaDeCategorias= Categoria.buscarCategorias();
 			request.setAttribute("ListaDeLibros", ListaDeLibros);
 			request.setAttribute("ListaDeCategorias", ListaDeCategorias);
+			
 			//request.setAttribute("ListaPorCategoria", ListaPorCategorias);				
 		} catch (DataBaseException e) {
 			// TODO Auto-generated catch block

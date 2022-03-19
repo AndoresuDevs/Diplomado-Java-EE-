@@ -16,10 +16,6 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/log4j-1.2-api-2.14.1.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/log4j-api-2.14.1.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/log4j-core-2.14.1.jar"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="test" value="true"/>
