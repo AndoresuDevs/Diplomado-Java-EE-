@@ -13,12 +13,10 @@ public class InsertarProveedorAccion extends Accion{
 		String Nombre = request.getParameter("nomProv");
 		String Telefono = request.getParameter("telProv");
 		String Direccion = request.getParameter("dirProv");
-		try {
-			 new Proveedor(Nombre, Telefono,Direccion).insertar();
+		
+		new Proveedor(Nombre, Telefono,Direccion).insertar();
 			 
-		} catch (DataBaseException e) {
-			e.printStackTrace();
-		}
+		
 		return "MostrarProveedores.do";
 	}
 

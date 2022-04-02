@@ -14,10 +14,12 @@
 	background:#24303c;
 	padding:30px;
 	margin: auto;
-	margin-top:100px;
+	margin-top: 40px;
+	margin-bottom: 50px;
 	border-radius:4px;
 	font-family:'roboto';
-	color:white;box-shadow:7px 13px 37px #000;
+	color:white;
+	box-shadow:7px 13px 37px #000;
 	
 }
 
@@ -53,8 +55,6 @@ h1{
 	color:white;
 	margin: 16px 0;
 	font-size:16px;
-	
-	
 }
 
 .navegar{

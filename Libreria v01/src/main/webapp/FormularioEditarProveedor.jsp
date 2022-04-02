@@ -9,7 +9,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
 		<title>Formulario para editar un proveedor</title>
-		<script type="text/javascript" src="js/validacionEditarLibro.js"></script>
 		<link rel="stylesheet" href="css/formularios.css">
 	</head>
 	<body background="img/formulario.jpg">
@@ -17,7 +16,7 @@
 			<h1>Formulario Editar Proveedor</h1>
 			<form action="EditarProveedor.do" method="GET">
 				<p><label class="txt" for="ID">ID:</label><br>
-				<input class="inputs" id="ID" type="text" name="idProv" value="<%=p.getid_prov() %>"  disabled/></p>	
+				<input class="inputs" id="ID" type="text" name="idProv" value="<%=p.getid_prov() %>" /></p>	
 				
 				<p><label class="txt" for="Nombre">Nombre:</label><br>
 				<input class="inputs" id="Nombre" type="text" name="nomProv" value="<%=p.getnom_prov() %>"/></p>	

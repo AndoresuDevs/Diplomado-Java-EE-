@@ -3,7 +3,12 @@ package acciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import javaEEJDBC.DataBaseException;
+import javaEEJDBC.DataBaseHelperHibernate;
+import javaEEJDBC.Libro;
 import javaEEJDBC.Proveedor;
 
 public class BorrarProveedorAccion extends Accion{
@@ -12,15 +17,10 @@ public class BorrarProveedorAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("ACT BORRAR PROVEEDOR");
 		int id = Integer.parseInt(request.getParameter("id"));
-		try {
-			
-			new Proveedor().BorrarProveedor(id);
-			
-		} catch (DataBaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		session.find(Proveedor.class, id).BorrarProveedor();
+		session.close();
 		return "MostrarProveedores.do";
 	}
 

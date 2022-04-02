@@ -14,12 +14,10 @@ public class InsertarLibroAccion extends Accion{
 		String StrTitulo = request.getParameter("nomLibro");
 		String Cat = request.getParameter("catLibro");
 		String Pre = request.getParameter("preLibro"); 
-		try {
-			 new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)).insertar();
+		
+		new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)).insertar();
 			 
-		} catch (DataBaseException e) {
-			e.printStackTrace();
-		}
+		
 		return "MostrarLibros.do";
 	}
 

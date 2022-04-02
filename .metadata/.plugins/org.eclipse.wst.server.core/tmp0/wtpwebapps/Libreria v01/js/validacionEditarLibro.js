@@ -8,7 +8,7 @@ function editar(){
 	var nom=document.getElementById("Titulo").value
 	var cat=document.getElementById("Categoria").value
 	var pre=document.getElementById("Precio").value
-	
+	alert("ID CAPTURADO: "+id)
 	var msjError=[]
 	
 	if(isbn==null||isbn==""){
@@ -43,17 +43,6 @@ function editar(){
 	}
 }
 
-var idSel
-
-
-function setId(id){
-	alert("VALOR DEL ID: "+id)
-	
-}
-
-function getId(){
-	return idSel
-}
 
 
 

@@ -21,7 +21,7 @@ public abstract class Accion {
 			
 			String text = Accion.class.getPackage()+"."+tipo+"Accion";
 			Class c = Class.forName(text.substring(8,text.length()));
-			System.out.println(text.substring(8,text.length()));
+			System.out.println("ACCION QUE SE INICIO: "+text.substring(8,text.length()));
 			accion = (Accion) c.newInstance();
 			
 		} catch (InstantiationException e) {

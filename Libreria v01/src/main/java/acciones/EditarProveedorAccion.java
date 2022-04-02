@@ -3,7 +3,11 @@ package acciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import javaEEJDBC.DataBaseException;
+import javaEEJDBC.DataBaseHelperHibernate;
 import javaEEJDBC.Proveedor;
 
 public class EditarProveedorAccion extends Accion{
@@ -17,14 +21,16 @@ public class EditarProveedorAccion extends Accion{
 				String tel = request.getParameter("telProv");
 				String dir = request.getParameter("dirProv");
 				
+				SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
+				Session session = factoriaSession.openSession();
 				
-				try {
-					
-					new Proveedor(nom,tel,dir).editarProveedor(id);
-				} catch (NumberFormatException | DataBaseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Proveedor prov = (Proveedor) session.find(Proveedor.class, id);
+				prov.setnom_prov(nom);
+				prov.settel_prov(tel);
+				prov.setdir_prov(dir);
+				prov.insertar();
+				session.close();
+			
 				return "MostrarProveedores.do";
 	}
 

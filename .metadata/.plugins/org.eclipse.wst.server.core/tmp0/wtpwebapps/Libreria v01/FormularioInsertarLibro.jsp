@@ -4,7 +4,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
 		<title>Formulario para alta de libro</title>
-		<script type="text/javascript" src="js/validacionAltaLibro.js"></script>
 		<link rel="stylesheet" href="css/formularios.css">
 	</head>
 	<body background="img/formulario.jpg">

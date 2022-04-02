@@ -9,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@SuppressWarnings({ "rawtypes", "unchecked" })
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+
 @Entity
 @Table(name="proveedores")
 public class Proveedor {
@@ -72,69 +75,52 @@ public class Proveedor {
 	}
 
 
-	public static List<Proveedor> buscarTodos()throws DataBaseException {
-//		String SQL ="SELECT * FROM proveedores";
-//		DataBaseHelper  dbh = new DataBaseHelper();
-//		List<Proveedor>ListaDeProveedores = dbh.seleccionarRegistros(SQL, Proveedor.class);
-//		String SQL ="SELECT * FROM proveedores";
-		//dbh.cerrarObjetos();
-		String consulta ="from Proveedor proveedor";
-		DataBaseHelperHibernate  dbhh = new DataBaseHelperHibernate();
-		List<Proveedor>ListaDeProveedores = dbhh.seleccionarRegistros(consulta);
+	public static List<Proveedor> buscarTodos()
+	{
+		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		List<Proveedor>ListaDeProveedores = session.createQuery("from Proveedor prov").list();
+		session.close();
 		return ListaDeProveedores;
 		
 	}
 
 
-	public void BorrarProveedor(int id) throws DataBaseException{
-//		String SQL ="DELETE  FROM proveedores WHERE id_prov="+id+";";
-//		DataBaseHelper dbh;
-//		dbh = new DataBaseHelper();
-//		int filas=dbh.modificarRegistro(SQL);
-//		System.out.println(filas);
-		DataBaseHelperHibernate dbhh = new DataBaseHelperHibernate();
-		dbhh.borrarRegistro(id);
+	public void BorrarProveedor() 
+	{
+		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		session.beginTransaction();
+		session.delete(this);
+		session.getTransaction().commit();
+		session.close();	
 		
 		
 	}
 	
 	
 	
-	public int insertar ()throws DataBaseException {
-//		String consultaSQL="INSERT INTO proveedores(nom_prov,tel_prov,dir_prov) VALUES ";
-//		consultaSQL +="('"+nom_prov+"','"+tel_prov+"','"+dir_prov+"');";
-//		DataBaseHelper dbh = new DataBaseHelper();
-//		int filasModif=dbh.modificarRegistro(consultaSQL);
-//		dbh.cerrarObjetos();
-//		return filasModif;
-		
-		DataBaseHelperHibernate dbhh = new DataBaseHelperHibernate();
-		dbhh.insertarRegistro(this);
-		
-		return 0;
+	public void insertar ()
+	{
+		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		session.beginTransaction();
+		session.saveOrUpdate(this);
+		session.getTransaction().commit();
+		session.close();
 	}
 	
 	
 	
-	//PENDIENTE DE HIBERNATE
-	public Proveedor buscarProveedor(int ID) throws DataBaseException {
-		System.out.println("ID RECIBIDO DE PROVEEDOR: "+ID);
-		String SQL ="SELECT * FROM proveedores WHERE id_prov="+ID;
-		DataBaseHelper dbh  = new DataBaseHelper();
-		List<Proveedor> listaDeProveedores = dbh.seleccionarRegistros(SQL, Proveedor.class);		
-		dbh.cerrarObjetos();
-		return  listaDeProveedores.get(0);
+	
+	public Proveedor buscarProveedor(int ID) 
+	{
+		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
+		Session session = factoriaSession.openSession();
+		Proveedor prov= (Proveedor)session.get(Proveedor.class, ID);
+		session.close();
+		return prov;
 	}
 	
-	public void editarProveedor(int ID)throws DataBaseException {
-//		DataBaseHelper dbh = new DataBaseHelper();
-//		int filasModif=dbh.actualizarProveedor(ID, this);
-//		dbh.cerrarObjetos();
-//		System.out.println("FILAS MODIFICADAS: "+filasModif);
-		
-		DataBaseHelperHibernate dbhh = new DataBaseHelperHibernate();
-		this.setid_prov(ID);
-		dbhh.actualizarRegistro(this);
-	}
 	
 }

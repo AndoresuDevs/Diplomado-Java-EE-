@@ -14,19 +14,11 @@ public class MostrarProveedoresAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			List<Proveedor>ListaDeProveedores=Proveedor.buscarTodos();
-			
-			request.setAttribute("ListaDeProveedores", ListaDeProveedores);
-			
-			//request.setAttribute("ListaPorCategoria", ListaPorCategorias);				
-		} catch (DataBaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
 		
 		
+		List<Proveedor>ListaDeProveedores=Proveedor.buscarTodos();
+		request.setAttribute("ListaDeProveedores", ListaDeProveedores);
+
 		return "MostrarProveedores.jsp";
 	}
 
