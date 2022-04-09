@@ -14,24 +14,21 @@ public class FiltrarPorCategoriaAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-				List<Libro>ListaPorCategorias = null;
-				List<Libro>ListaDeLibros = null;
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("categoria"));
+		System.out.println("FILTRO POR CATEGORIA ACCION");
 				try {
+ 
+					List<Libro>ListaPorCategorias= Libro.buscarPorCategoria(id);
+				
+					request.setAttribute("ListaDeCategorias", ListaPorCategorias);
 					
-					int cat = Integer.parseInt(request.getParameter("categoria"));
-					System.out.println("CATEGORIA QUE SE RECIBIO: "+cat);
-					ListaPorCategorias=Libro.buscarPorCategoria(cat);
-					
-					List<Categoria>ListaDeCategorias= Categoria.buscarCategorias();
-					
-				 	request.setAttribute("ListaDeLibros", ListaDeLibros);
-					request.setAttribute("ListaDeCategorias", ListaDeCategorias);
-					request.setAttribute("ListaPorCategoria", ListaPorCategorias);
-					
+					//request.setAttribute("ListaPorCategoria", ListaPorCategorias);				
 				} catch (DataBaseException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				return "MostrarLibros.jsp";
+				return "MostrarLibros.do";
 	}
 
 }

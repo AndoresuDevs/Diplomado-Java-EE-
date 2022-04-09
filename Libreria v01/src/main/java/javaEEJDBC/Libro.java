@@ -3,10 +3,13 @@ package javaEEJDBC;
 import java.io.File;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.HibernateException;
@@ -25,6 +28,9 @@ public class Libro {
 	private int num_lib;
 	private String isbn_lib;
 	private String tit_lib;
+	@ManyToOne  //TIPO DE RELACION ENTRE LOS CAMPOS DE LA TABLA
+	@JoinColumn(name = "cat_lib", referencedColumnName="id_cat", insertable=false, updatable=false, nullable=false) //CAMPO REFERENCIADO DE ESTA TABLA
+	private Categoria categoria; //EL OBJETO REFERENCIADO
 	private int cat_lib;
 	private float pre_lib;
 	
@@ -82,9 +88,14 @@ public class Libro {
 		this.pre_lib = Precio;
 	}
 	
+	public Categoria getCategoria() {
+		return categoria;
+	}
 
-	
-	
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	public static List<Integer> buscarLasCategorias() throws DataBaseException{
 		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
 		Session session = factoriaSession.openSession();
@@ -96,7 +107,7 @@ public class Libro {
 	}
 	
 	public void insertar (){
-
+		imprimirEnConsola();
 		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
 		Session session = factoriaSession.openSession();
 		session.beginTransaction();
@@ -145,6 +156,17 @@ public class Libro {
 		return ListaDeLibros;
 		
 		
+	}
+	
+	
+	private void imprimirEnConsola() {
+		System.out.println("LIBRO EN JAVA BEAN:");
+		System.out.println("NUM: "+num_lib);
+		System.out.println("ISBN: "+isbn_lib);
+		System.out.println("TIT: "+tit_lib);
+		System.out.println("PRE:"+pre_lib);
+		System.out.println("CAT: "+cat_lib);
+		System.out.println("FIN DEL LIBRO");
 	}
 	
 	

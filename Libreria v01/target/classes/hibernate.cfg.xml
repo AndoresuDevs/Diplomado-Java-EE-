@@ -13,6 +13,7 @@
 		<!-- Mapear cada JAVA BEAN que se vaya ocupando -->
 		<mapping class="javaEEJDBC.Libro"/>
 		<mapping class="javaEEJDBC.Proveedor"/>
+		<mapping class="javaEEJDBC.Categoria"/>
 	</session-factory>
 
 </hibernate-configuration>

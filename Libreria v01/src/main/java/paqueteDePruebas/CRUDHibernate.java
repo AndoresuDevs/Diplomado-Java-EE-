@@ -27,32 +27,10 @@ public class CRUDHibernate {
 		
 		System.out.println("\nBUSCAR TODOS");
 		for(Libro L:hib.buscarTodos()) {
-			System.out.println(L.getnum_lib()+"\t\t"+L.getisbn_lib()+"\t\t"+L.gettit_lib()+"\t\t"+L.getcat_lib()+"\t\t"+L.getpre_lib());
+			System.out.println(L.getnum_lib()+"\t\t"+L.getisbn_lib()+"\t\t"+L.gettit_lib()+"\t\t"+L.getCategoria().getnom_cat()+"\t\t"+L.getpre_lib());
 		
 		}
 		
-		System.out.println("\nLIBRO POR ID");
-		System.out.println("ID 1: "+hib.buscarLibro(1).gettit_lib());
-		
-		
-		//hib.borrarLibro(22);
-		System.out.println("LIBRO BORRADO");
-		for(Libro L:hib.buscarTodos()) {
-			//System.out.println(L.getnum_lib()+"\t\t"+L.getisbn_lib()+"\t\t"+L.gettit_lib()+"\t\t"+L.getcat_lib()+"\t\t"+L.getpre_lib());
-		
-		}
-		
-		System.out.println("\nFiltro por categoria");
-		for(Libro L:hib.buscarPorCategoria(2)) {
-			System.out.println(L.getnum_lib()+"\t\t"+L.getisbn_lib()+"\t\t"+L.gettit_lib()+"\t\t"+L.getcat_lib()+"\t\t"+L.getpre_lib());
-		
-		}
-		
-		System.out.println("\nBUSCAR PROVEEDORES");
-		for(Proveedor L:hib.buscarProveedores()) {
-			System.out.println(L.getid_prov()+"\t\t"+L.getnom_prov()+"\t\t"+L.gettel_prov()+"\t\t"+L.getdir_prov());
-		
-		}
 
 	}
 

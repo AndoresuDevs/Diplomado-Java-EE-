@@ -33,8 +33,8 @@ public class ControladorLibros extends HttpServlet {
 		Accion accion = null;
 		String url=request.getServletPath();
 		
-		System.out.println("controlador libros: "+url.substring(1,url.length()-3));
-		accion = Accion.getAccion(url.substring(1,url.length()-3));
+		System.out.println("controlador libros detetcto el origen en: "+url.substring(1,url.length()-3));
+		//accion = Accion.getAccion(url.substring(1,url.length()-3));
 
 		if(request.getServletPath().equals("/ControladorLibros.do")) 
 		{

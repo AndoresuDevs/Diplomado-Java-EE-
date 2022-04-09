@@ -15,14 +15,10 @@ public class FormularioInsertarLibroAccion extends Accion {
 		// TODO Auto-generated method stub
 		System.out.println("CTRL FORMULARIO INSERTAR QUE NO SE QUE HACE");
 		List<Categoria> listaDeCategorias=null;
-		try {
-			listaDeCategorias = Categoria.buscarCategorias();
-			request.setAttribute("ListaDeCategorias", listaDeCategorias);
+		listaDeCategorias = Categoria.buscarCategorias();
+		request.setAttribute("ListaDeCategorias", listaDeCategorias);
 			
-		} catch (DataBaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		return"FormularioInsertarLibro.jsp";
 	}
 
