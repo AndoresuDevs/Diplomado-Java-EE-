@@ -3,8 +3,8 @@
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Libro;
 import javaEEJDBC.DataBaseException;
-import javaEEJDBC.Libro;
 
 public class InsertarLibroAccion extends Accion{
 

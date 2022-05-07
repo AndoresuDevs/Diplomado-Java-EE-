@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import beans.Libro;
+import beans.Proveedor;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.DataBaseHelperHibernate;
-import javaEEJDBC.Libro;
-import javaEEJDBC.Proveedor;
 
 public class BorrarProveedorAccion extends Accion{
 

@@ -1,4 +1,4 @@
-package javaEEJDBC;
+package beans;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import javaEEJDBC.DataBaseHelperHibernate;
 
 
 @Entity

@@ -1,16 +1,20 @@
-package javaEEJDBC;
+package beans;
 
 import java.io.File;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PersistenceException;
 import javax.persistence.Table;
+import javax.persistence.TypedQuery;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -18,6 +22,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+
+import javaEEJDBC.DataBaseException;
+import javaEEJDBC.DataBaseHelperHibernate;
+import javaEEJDBC.JPAHelper;
 
 //ANOTACIONES QUE LEE EL FRAMEWORK HIBERNATE
 
@@ -96,6 +104,109 @@ public class Libro {
 		this.categoria = categoria;
 	}
 
+	
+	public void insertar()
+	{
+		EntityManager em = JPAHelper.createEntityManager();
+		
+		EntityTransaction et = null;
+	
+		et = em.getTransaction();
+		et.begin();
+		
+		em.persist(this);
+		et.commit();
+		em.close();		
+		
+	}
+	
+	public void guardarCambios() {
+		
+	}
+	
+	public static List<Libro> buscarTodos()
+	{
+		EntityManager em = JPAHelper.createEntityManager();
+		TypedQuery<Libro> consulta = em.createQuery("SELECT L from Libro L",Libro.class);
+		List<Libro> lista = consulta.getResultList();
+		for(Libro l:lista) {
+			System.out.println(l.gettit_lib());
+		}
+		
+		return lista;
+	}
+	
+	public void BorrarLibro()
+	{
+		EntityManager em = JPAHelper.createEntityManager();
+		EntityTransaction et = null;
+		
+		et = em.getTransaction();
+		et.begin();
+		em.remove(em.merge(this));
+		et.commit();
+		em.close();
+		
+	}
+	
+	public static Libro buscarLibro(int id)
+	{
+		EntityManager em = JPAHelper.createEntityManager();
+		TypedQuery<Libro> consulta;
+		Libro libro = null;
+		try {
+			consulta = em.createQuery("SELECT L from Libro L "
+									+ "where L.num_lib ="+id, Libro.class);
+			libro = consulta.getSingleResult();
+			em.close();
+		}catch(PersistenceException e)
+		{
+			e.printStackTrace();
+		}
+
+		
+		return libro;
+	}
+	
+	public static List<Libro> buscarPorCategoria(int idCat)
+	{
+		EntityManager em = JPAHelper.createEntityManager();
+		TypedQuery<Libro> consulta;
+		List<Libro> ListaLibros = null;
+		try {
+			consulta = em.createQuery("SELECT L from Libro L where L.cat_lib ="+idCat, Libro.class);
+			ListaLibros = consulta.getResultList();
+			em.close();
+		}catch(PersistenceException e)
+		{
+			e.printStackTrace();
+		}
+
+		return ListaLibros;
+	}
+	
+	public static List<Libro> buscarPorProveedor(int idProv)
+	{
+		EntityManager em = JPAHelper.createEntityManager();
+		TypedQuery<Libro> consulta;
+		List<Libro> ListaLibros = null;
+		try {
+			consulta = em.createQuery("SELECT L from Libro L where L.prov_lib ="+idProv, Libro.class);
+			ListaLibros = consulta.getResultList();
+			em.close();
+		}catch(PersistenceException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return ListaLibros;
+	}
+	
+	
+	
+}
+	//METODOS CON HIBERNATE HELPER
+	/*
 	public static List<Integer> buscarLasCategorias() throws DataBaseException{
 		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
 		Session session = factoriaSession.openSession();
@@ -172,4 +283,4 @@ public class Libro {
 	
 	
 	
-}
+} */

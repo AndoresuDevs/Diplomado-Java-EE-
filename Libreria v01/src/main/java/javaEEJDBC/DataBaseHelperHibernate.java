@@ -14,7 +14,12 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-public class DataBaseHelperHibernate<T> extends Libro{
+import beans.Libro;
+
+
+
+
+public class DataBaseHelperHibernate<T>extends Libro{
 	
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 	

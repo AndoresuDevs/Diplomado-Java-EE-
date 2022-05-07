@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import beans.Libro;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.DataBaseHelperHibernate;
-import javaEEJDBC.Libro;
 
 public class EditarLibroAccion extends Accion{
 

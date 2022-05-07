@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import beans.Proveedor;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.DataBaseHelperHibernate;
-import javaEEJDBC.Proveedor;
 
 public class EditarProveedorAccion extends Accion{
 

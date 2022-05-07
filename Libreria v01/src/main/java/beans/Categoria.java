@@ -1,21 +1,26 @@
-package javaEEJDBC;
+package beans;
 
 
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+import javaEEJDBC.DataBaseHelperHibernate;
+import javaEEJDBC.JPAHelper;
 
 
 //ESTA ETIQUETA ES LA FORMA EN QUE NOS CONECTAMOS CON EL FRAMEWORK PARA 
@@ -69,21 +74,41 @@ public class Categoria
 		this.nom_cat = nom_cat;
 	}
 
-	
 
-
-
-	
 	public static List<Categoria> buscarCategorias()
 	{
-
+		System.out.println("BUSCAR CATEGORIAS");
 	
-		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		List <Categoria>ListaDeCategorias = session.createQuery("from Categoria cat").list();
-		session.close();
+		
+		
+		System.out.println("TRONO?");
+		EntityManager em = JPAHelper.createEntityManager();
+		TypedQuery<Categoria> consulta = em.createQuery("SELECT C from Categoria C",Categoria.class);
+		List <Categoria>ListaDeCategorias = consulta.getResultList();
+		for(Categoria l:ListaDeCategorias) {
+			System.out.println(l.getnom_cat());
+		}
+		
+	
+		
 		return ListaDeCategorias;
 	}
+	
+	/*public static List<Categoria> buscarCategorias()
+	{
+		System.out.println("BUSCAR CATEGORIAS");
+	
+		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
+		System.out.println("1");
+		Session session = factoriaSession.openSession();
+		System.out.println("2");
+		List <Categoria>ListaDeCategorias = session.createQuery("from Categoria cat").list();
+		System.out.println("3");
+		session.close();
+		
+		System.out.println("TRONO?");
+		return ListaDeCategorias;
+	}*/
 	
 	
 	

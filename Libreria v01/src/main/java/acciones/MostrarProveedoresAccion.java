@@ -5,10 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javaEEJDBC.Categoria;
+import beans.Categoria;
+import beans.Libro;
+import beans.Proveedor;
 import javaEEJDBC.DataBaseException;
-import javaEEJDBC.Libro;
-import javaEEJDBC.Proveedor;
 
 public class MostrarProveedoresAccion extends Accion{
 

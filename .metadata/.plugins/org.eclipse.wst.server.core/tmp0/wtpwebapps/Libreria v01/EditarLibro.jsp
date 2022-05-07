@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 
 
-<%@ page import="javaEEJDBC.Libro"%>
+<%@ page import="beans.Libro"%>
 <%
 	System.out.println("ENTRO EL EDITAR LIBRO JSP");
 	int ID = Integer.parseInt(request.getParameter("ID"));

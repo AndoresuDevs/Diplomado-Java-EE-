@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 
 
-<%@ page import="javaEEJDBC.Proveedor"%>
+<%@ page import="beans.Proveedor"%>
 <%
 	int ID = Integer.parseInt(request.getParameter("ID"));
 	String Nombre = request.getParameter("Nombre");
@@ -10,7 +10,7 @@
 	String Direccion = request.getParameter("Direccion");
 	//int filas = new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)).editarLibro(Integer.parseInt(ID));
 	Proveedor p = new Proveedor(Nombre, Telefono, Direccion);
-	p.editarProveedor(ID);
+	//p.editarProveedor(ID);
 	
 	//System.out.println("FILAS MODIFICADAS: "+filas);	
 	response.sendRedirect("MostrarProveedores.do");

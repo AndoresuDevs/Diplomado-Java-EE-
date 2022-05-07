@@ -6,6 +6,13 @@
   <packaging>war</packaging>
   <description>Libreria creada por Java EE8 2021</description>
   <dependencies>
+  
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-entitymanager</artifactId>
+  		<version>5.6.5.Final</version>
+  	</dependency>
+  
   	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
 		<dependency>
     		<groupId>javax.servlet.jsp.jstl</groupId>
@@ -50,6 +57,9 @@
         <excludes>
           <exclude>**/*.java</exclude>
         </excludes>
+      </resource>
+      <resource>
+      	<directory>src/main/resources</directory>
       </resource>
     </resources>
     <plugins>

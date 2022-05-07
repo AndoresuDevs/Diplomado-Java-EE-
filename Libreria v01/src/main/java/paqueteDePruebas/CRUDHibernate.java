@@ -10,8 +10,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-import javaEEJDBC.Libro;
-import javaEEJDBC.Proveedor;
+import beans.Libro;
+import beans.Proveedor;
 
 
 

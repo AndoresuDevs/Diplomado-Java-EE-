@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <%@page import="java.sql.SQLException" %>
-<%@page import="javaEEJDBC.Libro"%>
+<%@page import="beans.Libro"%>
 <html lang="es">
 	<% int idLibro = Integer.parseInt(request.getParameter("id"));  //AQUI SE DEBERIA RECIBIR EL PARAMETRO%>
 	<%System.out.println("EL ID RECIBIDO ES:  "+idLibro);%>

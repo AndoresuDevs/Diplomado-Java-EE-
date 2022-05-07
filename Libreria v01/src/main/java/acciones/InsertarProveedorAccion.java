@@ -3,8 +3,8 @@ package acciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Proveedor;
 import javaEEJDBC.DataBaseException;
-import javaEEJDBC.Proveedor;
 
 public class InsertarProveedorAccion extends Accion{
 

@@ -11,9 +11,9 @@
 		<!-- //PONER EN FALSE CUANDO SALE A PRO, SOLO SE USA EN PRE -->
 		<property name="show_sql">true</property> 
 		<!-- Mapear cada JAVA BEAN que se vaya ocupando -->
-		<mapping class="javaEEJDBC.Libro"/>
-		<mapping class="javaEEJDBC.Proveedor"/>
-		<mapping class="javaEEJDBC.Categoria"/>
+		<mapping class="beans.Libro"/>
+		<mapping class="beans.Proveedor"/>
+		<mapping class="beans.Categoria"/>
 	</session-factory>
 
 </hibernate-configuration>
