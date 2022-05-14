@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Categoria;
 import beans.Libro;
+import dao.CategoriaDAO;
+import dao.LibroDAO;
 import javaEEJDBC.DataBaseException;
 
 public class MostrarLibrosAccion extends Accion{
@@ -14,12 +16,19 @@ public class MostrarLibrosAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		
-		List<Libro>ListaDeLibros=Libro.buscarTodos();
+		List<Libro> ListaDeLibros;
+		try {
+			ListaDeLibros = LibroDAO.buscarTodos();
+			List<Categoria>ListaDeCategorias= CategoriaDAO.buscarTodas();
+			
+			request.setAttribute("ListaDeLibros", ListaDeLibros);
+			request.setAttribute("ListaDeCategorias", ListaDeCategorias);
 		
-		List<Categoria>ListaDeCategorias= Categoria.buscarCategorias();
-		request.setAttribute("ListaDeLibros", ListaDeLibros);
-		request.setAttribute("ListaDeCategorias", ListaDeCategorias);
-	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return "MostrarLibros.jsp";
 	}
 

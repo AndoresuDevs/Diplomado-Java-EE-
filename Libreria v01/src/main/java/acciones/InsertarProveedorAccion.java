@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Proveedor;
+import dao.ProveedorDAO;
 import javaEEJDBC.DataBaseException;
 
 public class InsertarProveedorAccion extends Accion{
@@ -14,8 +15,9 @@ public class InsertarProveedorAccion extends Accion{
 		String Telefono = request.getParameter("telProv");
 		String Direccion = request.getParameter("dirProv");
 		
-		new Proveedor(Nombre, Telefono,Direccion).insertar();
-			 
+		
+		ProveedorDAO dao = new ProveedorDAO();
+		dao.insertar(new Proveedor(Nombre, Telefono,Direccion));
 		
 		return "MostrarProveedores.do";
 	}

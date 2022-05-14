@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import beans.Categoria;
 import beans.Libro;
 import beans.Proveedor;
+import dao.ProveedorDAO;
 import javaEEJDBC.DataBaseException;
 
 public class MostrarProveedoresAccion extends Accion{
@@ -16,7 +17,7 @@ public class MostrarProveedoresAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		
 		
-		List<Proveedor>ListaDeProveedores=Proveedor.buscarTodos();
+		List<Proveedor>ListaDeProveedores=ProveedorDAO.buscarTodos();
 		request.setAttribute("ListaDeProveedores", ListaDeProveedores);
 
 		return "MostrarProveedores.jsp";

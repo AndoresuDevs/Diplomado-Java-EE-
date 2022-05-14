@@ -76,6 +76,7 @@ public class Proveedor {
 		this.dir_prov = Direccion;
 	}
 
+	/*
 
 	public static List<Proveedor> buscarTodos()
 	{
@@ -123,6 +124,6 @@ public class Proveedor {
 		session.close();
 		return prov;
 	}
-	
+	*/
 	
 }

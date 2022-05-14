@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 
     
-    
+<%@ page import="dao.ProveedorDAO"%>
 <%@ page import="beans.Proveedor"%>
 <%@ page import="javaEEJDBC.DataBaseException"%>
 
@@ -11,8 +11,9 @@
 	boolean error=false;
 	Proveedor prov=new Proveedor();
 	
-		prov.BorrarProveedor();
-		response.sendRedirect("MostrarProveedores.jsp");
+	ProveedorDAO dao = new ProveedorDAO();
+	dao.borrarProveedor(prov);
+	response.sendRedirect("MostrarProveedores.jsp");
 	
 	
 %>

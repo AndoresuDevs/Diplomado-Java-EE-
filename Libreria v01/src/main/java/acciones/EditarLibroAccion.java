@@ -23,18 +23,10 @@ public class EditarLibroAccion extends Accion{
 		String StrTitulo = request.getParameter("nomLibro");
 		String Cat = request.getParameter("catLibro");
 		String Pre = request.getParameter("preLibro");
+	
 		
-		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		Session session = factoriaSession.openSession();
 		
-		Libro libro = (Libro) session.find(Libro.class,id);
-		libro.setisbn_lib(StrISBN);
-		libro.settit_lib(StrTitulo);
-		libro.setcat_lib(Integer.parseInt(Cat));
-		libro.setpre_lib(Float.parseFloat(Pre));
 		
-		libro.insertar();
-		session.close();
 		return "MostrarLibros.do";
 	}
 

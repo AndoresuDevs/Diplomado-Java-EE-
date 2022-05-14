@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 
 import beans.Libro;
 import beans.Proveedor;
+import dao.ProveedorDAO;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.DataBaseHelperHibernate;
 
@@ -17,10 +18,11 @@ public class BorrarProveedorAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("ACT BORRAR PROVEEDOR");
 		int id = Integer.parseInt(request.getParameter("id"));
-		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		session.find(Proveedor.class, id).BorrarProveedor();
-		session.close();
+		
+		ProveedorDAO dao = new ProveedorDAO();
+		Proveedor p = dao.buscarProveedor(id);
+		dao.borrarProveedor(p);
+	
 		return "MostrarProveedores.do";
 	}
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="beans.Libro"%>
+<%@ page import="dao.LibroDAO"%>
 <%@ page import="javaEEJDBC.DataBaseException"%>
 
 <%
@@ -9,7 +10,8 @@
 	String Cat = request.getParameter("Categoria");
 	String Pre = request.getParameter("Precio");
 	
-	new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)).insertar();
+	LibroDAO dao = new LibroDAO();
+	dao.insertar(new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)));
 	
 	%>
 	

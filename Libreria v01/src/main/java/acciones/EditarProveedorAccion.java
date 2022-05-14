@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import beans.Proveedor;
+import dao.ProveedorDAO;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.DataBaseHelperHibernate;
 
@@ -28,7 +29,9 @@ public class EditarProveedorAccion extends Accion{
 				prov.setnom_prov(nom);
 				prov.settel_prov(tel);
 				prov.setdir_prov(dir);
-				prov.insertar();
+				ProveedorDAO dao = new ProveedorDAO();
+				dao.guardarCambios(prov);
+				
 				session.close();
 			
 				return "MostrarProveedores.do";

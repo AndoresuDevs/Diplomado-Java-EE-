@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Categoria;
 import beans.Libro;
+import dao.LibroDAO;
 import javaEEJDBC.DataBaseException;
 
 public class FiltrarPorCategoriaAccion extends Accion{
@@ -17,8 +18,15 @@ public class FiltrarPorCategoriaAccion extends Accion{
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("categoria"));
 		System.out.println("FILTRO POR CATEGORIA ACCION");
-		List<Libro>ListaPorCategorias= Libro.buscarPorCategoria(id);
-		request.setAttribute("ListaDeCategorias", ListaPorCategorias);
+		List<Libro> ListaPorCategorias;
+		try {
+			ListaPorCategorias = LibroDAO.buscarPorCategoria(id);
+			request.setAttribute("ListaDeCategorias", ListaPorCategorias);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return "MostrarLibros.do";
 	}
 

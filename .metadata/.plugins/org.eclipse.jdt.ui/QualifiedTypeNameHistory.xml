@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
-    <fullyQualifiedTypeName name="javaEEJDBC.DataBaseHelper"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
-    <fullyQualifiedTypeName name="java.sql.SQLException"/>
-    <fullyQualifiedTypeName name="org.apache.logging.log4j.core.appender.ConsoleAppender"/>
     <fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
     <fullyQualifiedTypeName name="org.apache.logging.log4j.core.Appender"/>
     <fullyQualifiedTypeName name="org.apache.logging.log4j.core.appender.FileAppender"/>
@@ -53,11 +45,19 @@
     <fullyQualifiedTypeName name="org.hibernate.annotations.FetchMode"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.Fetch"/>
     <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
-    <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
-    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
-    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
     <fullyQualifiedTypeName name="javax.persistence.TypedQuery"/>
     <fullyQualifiedTypeName name="javaEEJDBC.Libro"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
     <fullyQualifiedTypeName name="javax.persistence.PersistenceException"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityTransaction"/>
+    <fullyQualifiedTypeName name="beans.Libro"/>
+    <fullyQualifiedTypeName name="dao.LibroDAO"/>
+    <fullyQualifiedTypeName name="javaEEJDBC.JPAHelper"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
+    <fullyQualifiedTypeName name="javax.persistence.PrimaryKeyJoinColumn"/>
+    <fullyQualifiedTypeName name="beans.Categoria"/>
+    <fullyQualifiedTypeName name="dao.CategoriaDAO"/>
+    <fullyQualifiedTypeName name="dao.ProveedorDAO"/>
 </qualifiedTypeNameHistroy>

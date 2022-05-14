@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.TypedQuery;
 
@@ -29,11 +30,12 @@ import javaEEJDBC.JPAHelper;
 public class Categoria 
 {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@PrimaryKeyJoinColumn
 	private int id_cat;
 	private String nom_cat;
 	//PARA QUE FUNCIONE CHIDO EL HIBERNATE
-	@Fetch(value = FetchMode.SELECT)//////
-	@OneToMany( cascade = CascadeType.ALL)
+	//@Fetch(value = FetchMode.SELECT)//////
+	@OneToMany
 	@JoinColumn(name="id_cat") //ESTA ETIQUETA FUNCIONA CON ESTA LISTA CON EL CAMPO DE ESTA TABLA...
 	private List<Libro>listaDeLibros;
 	
@@ -75,7 +77,7 @@ public class Categoria
 	}
 
 
-	public static List<Categoria> buscarCategorias()
+	/*public static List<Categoria> buscarCategorias()
 	{
 		System.out.println("BUSCAR CATEGORIAS");
 	
@@ -93,6 +95,7 @@ public class Categoria
 		
 		return ListaDeCategorias;
 	}
+	*/
 	
 	/*public static List<Categoria> buscarCategorias()
 	{

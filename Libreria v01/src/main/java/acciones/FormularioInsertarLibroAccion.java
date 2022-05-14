@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Categoria;
+import dao.CategoriaDAO;
 import javaEEJDBC.DataBaseException;
 
 public class FormularioInsertarLibroAccion extends Accion {
@@ -15,7 +16,7 @@ public class FormularioInsertarLibroAccion extends Accion {
 		// TODO Auto-generated method stub
 		System.out.println("CTRL FORMULARIO INSERTAR QUE NO SE QUE HACE");
 		List<Categoria> listaDeCategorias=null;
-		listaDeCategorias = Categoria.buscarCategorias();
+		listaDeCategorias = CategoriaDAO.buscarTodas();
 		request.setAttribute("ListaDeCategorias", listaDeCategorias);
 			
 		

@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import beans.Libro;
+import dao.LibroDAO;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.DataBaseHelperHibernate;
 
@@ -19,12 +20,10 @@ public class BorrarLibroAccion extends Accion  {
 		System.out.println("ACT BORRAR LIBRO");
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		Libro l = Libro.buscarLibro(id);
-		l.BorrarLibro();
-		//SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		//Session session = factoriaSession.openSession();
-		//session.find(Libro.class, id).BorrarLibro();
-		//session.close();
+		LibroDAO DAOLib = new LibroDAO();
+		
+		Libro l = DAOLib.buscarLibro(id);
+		DAOLib.BorrarLibro(l);
 		return "MostrarLibros.do";
 	}
 

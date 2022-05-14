@@ -3,6 +3,7 @@
 
 
 <%@ page import="beans.Libro"%>
+<%@page import="dao.LibroDAO"%>
 <%
 	System.out.println("ENTRO EL EDITAR LIBRO JSP");
 	int ID = Integer.parseInt(request.getParameter("ID"));
@@ -14,7 +15,9 @@
 	//int filas = new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)).editarLibro(Integer.parseInt(ID));
 	Libro L = new Libro(StrISBN, StrTitulo, Cat, Pre);
 	System.out.println("2 - ID EN EDITAR LIBRO JSP: "+ID);
-	L.insertar();
+	LibroDAO dao = new LibroDAO();
+	dao.guardarCambios(L);
+	
 	//System.out.println("FILAS MODIFICADAS: "+filas);	
 	response.sendRedirect("MostrarLibros.do");
 %>
