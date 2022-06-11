@@ -60,7 +60,7 @@ public class Libro {
 		return num_lib;
 	}
 	
-	protected void setnum_lib(int Numero) {
+	public void setnum_lib(int Numero) {
 		this.num_lib = Numero;
 	}
 
@@ -130,8 +130,6 @@ public class Libro {
 		session.saveOrUpdate(this);
 		session.getTransaction().commit();
 		session.close();	
-		
-		
 	}
 	
 	public static List<Libro> buscarTodos()throws DataBaseException {

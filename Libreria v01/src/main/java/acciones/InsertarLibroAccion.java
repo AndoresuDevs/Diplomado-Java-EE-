@@ -4,19 +4,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Libro;
+import dao.CategoriaDAO;
+import dao.DAOAbstractFactory;
+import dao.DAOFactory;
 import dao.LibroDAO;
+import dao.LibroDAOJPAImpl;
 import javaEEJDBC.DataBaseException;
 
 public class InsertarLibroAccion extends Accion{
+	
+	DAOFactory factoria = DAOAbstractFactory.getInstance() ;
+	CategoriaDAO categoriaDAO = factoria.getCategoriaDAO();
+	LibroDAO libroDAO= factoria.getLibroDAO();
+	
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		String StrISBN = request.getParameter("ISBN");
-		String StrTitulo = request.getParameter("nomLibro");
-		String Cat = request.getParameter("catLibro");
-		String Pre = request.getParameter("preLibro"); 
+//		new LibroDAOJPAImpl().insertar(new Libro(
+//				request.getParameter("ISBN"), 
+//				request.getParameter("nomLibro"), 
+//				Integer.parseInt(request.getParameter("catLibro")), 
+//				Float.parseFloat(request.getParameter("preLibro")))
+//				);
 		
-		new LibroDAO().insertar(new Libro(StrISBN, StrTitulo, Integer.parseInt(Cat), Float.parseFloat(Pre)));
+		libroDAO.insertar(new Libro(
+		request.getParameter("ISBN"), 
+		request.getParameter("nomLibro"), 
+		Integer.parseInt(request.getParameter("catLibro")), 
+		Float.parseFloat(request.getParameter("preLibro")))
+		);
 			 
 		
 		return "MostrarLibros.do";

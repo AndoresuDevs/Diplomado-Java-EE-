@@ -9,17 +9,22 @@ import beans.Categoria;
 import beans.Libro;
 import beans.Proveedor;
 import dao.ProveedorDAO;
+import dao.ProveedorDAOJPAImpl;
 import javaEEJDBC.DataBaseException;
+import servicios.ServicioProveedores;
+import servicios.ServicioProveedoresImpl;
 
 public class MostrarProveedoresAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			ServicioProveedores servicioProv = new ServicioProveedoresImpl();
+			request.setAttribute("ListaDeProveedores", servicioProv.buscarTodos());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		
-		
-		List<Proveedor>ListaDeProveedores=ProveedorDAO.buscarTodos();
-		request.setAttribute("ListaDeProveedores", ListaDeProveedores);
-
 		return "MostrarProveedores.jsp";
 	}
 

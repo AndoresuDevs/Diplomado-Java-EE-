@@ -9,20 +9,23 @@ import org.hibernate.SessionFactory;
 import beans.Libro;
 import beans.Proveedor;
 import dao.ProveedorDAO;
+import dao.ProveedorDAOJPAImpl;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.DataBaseHelperHibernate;
+import servicios.ServicioCategorias;
+import servicios.ServicioCategoriasImpl;
+import servicios.ServicioProveedores;
+import servicios.ServicioProveedoresImpl;
 
 public class BorrarProveedorAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("ACT BORRAR PROVEEDOR");
-		int id = Integer.parseInt(request.getParameter("id"));
 		
-		ProveedorDAO dao = new ProveedorDAO();
-		Proveedor p = dao.buscarProveedor(id);
-		dao.borrarProveedor(p);
-	
+		ServicioProveedores servicioProv = new ServicioProveedoresImpl();
+		
+		//ProveedorDAOJPAImpl dao = new ProveedorDAOJPAImpl();
+		servicioProv.borrar(servicioProv.buscarPorClave(Integer.parseInt(request.getParameter("id"))));
 		return "MostrarProveedores.do";
 	}
 

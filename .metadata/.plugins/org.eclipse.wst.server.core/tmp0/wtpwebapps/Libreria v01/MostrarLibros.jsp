@@ -12,40 +12,57 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
 	<link rel="stylesheet" href="css/tablas.css">
+	<link rel="stylesheet" href="css/navegacion.css">
+	<link rel="stylesheet" href="css/fontello.css">
 	<title>Lista de Libros</title>
 </head>
 <body background="img/formulario.jpg">
+
+	<header class="header">
+		<div class="container">
+			<div class="btn-menu">
+				<label for="btn-menu" class="icon-menu"></label>
+			</div>
+			<nav class="menu">
+				<a href="#">Inicio</a>
+				<a href="#">POR</a>
+				<a href="#">SI SE</a>
+				<a href="#">OCUPAN XD</a>
+			</nav>
+		</div>
+	</header>
+	
+
+
 	<div class=contenedor>
-	<table>
-	<thead>
-		<tr>
-			<th><a href="FormularioInsertarLibro.jsp">Insertar Nuevo Libro</a></th>
-			<th><a href="MostrarProveedores.do">Proveedores</a></th>
-		</tr>
-	</thead>
-	</table>
-	
-	
-	
-	
-	<form action="ControladorLibros.do" method="GET">
-	<p class="navegar">
-		<br><label>Categorias disonibles: </label>
-		<select name="categoria">
-		<option value="Seleccionar">Seleccionar</option>
+		<h2>Lista de libros</h2>  
+		<br>
+		<a class="agregar" href="FormularioInsertarLibro.jsp">Insertar Nuevo Libro</a>
+		
+		<label class="icon-icon-list-add" for="btn-menu"></label>
+		
+		<form action="ControladorLibros.do" method="GET">
+			<br><label>Categorias disonibles: </label>
+			<select name="categoria">
+			<option value="Seleccionar">Seleccionar</option>
 			<c:forEach var="cat" items="${ListaDeCategorias}">
 				<option value ="${cat.getid_cat()}">${cat.getnom_cat()}</option>
 			</c:forEach>		
-		</select>
-		<input type="submit" value="Filtrar" /> 
-	</p>
-	</form>
+			</select>
+			<input type="submit" value="Filtrar" /> 
+		</form>
+		
+		
+	
+	
+	
+	
 	<br><br> 
-	<h2>Lista de libros</h2>
+	
 		<table class="tabla">
 			<thead>
 				<tr>
-					<th>Numero</th>
+					<th>ID</th>
 					<th>ISBN</th>
 					<th>Titulo</th>
 					<th>Categoria</th>
@@ -66,13 +83,37 @@
 							</c:if>
 						</c:forEach>
 						<td>${lib.getpre_lib()}</td>
-						<td><a href="BorrarLibro.do?id=${lib.getnum_lib()}">Borar</a></td>
-						<td><a href="FormularioEditarLibro.jsp?id=${lib.getnum_lib()}">Editar</a></td>
+						<td><a class="icon-trash-empty" href="BorrarLibro.do?id=${lib.getnum_lib()}"></a></td>
+						<td><a class="icon-pencil" href="FormularioEditarLibro.jsp?id=${lib.getnum_lib()}"></a></td>
 					</tr>
 					</c:forEach>
 			</tbody>
 		</table>
 	</div>
 	<br><br>
+	
+	
+	
+	
+	
+	<input type="checkbox" id="btn-menu">
+	<div class="container-menu">
+		<div class="cont-menu">
+			<nav>
+				<a href="MostrarProveedores.do">Proveedores</a>
+				<a href="MostrarCategorias.do">Categorias</a>
+				<a href="#">Suscribirse</a>
+				
+			</nav>
+			<label class="icon-cancel-circled" for="btn-menu"></label>
+		</div>
+	</div>
+	
+	
+	
 </body>
 </html>
+
+
+
+

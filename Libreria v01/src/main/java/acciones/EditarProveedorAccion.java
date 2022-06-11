@@ -8,32 +8,30 @@ import org.hibernate.SessionFactory;
 
 import beans.Proveedor;
 import dao.ProveedorDAO;
+import dao.ProveedorDAOJPAImpl;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.DataBaseHelperHibernate;
+import servicios.ServicioProveedores;
+import servicios.ServicioProveedoresImpl;
 
 public class EditarProveedorAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		ServicioProveedores servicioProv = new ServicioProveedoresImpl();
 		System.out.println("OTRO ID EN ACCION ES:"+request.getParameter("idProv"));
-				int id = Integer.parseInt(request.getParameter("idProv"));
-				String nom = request.getParameter("nomProv");
-				String tel = request.getParameter("telProv");
-				String dir = request.getParameter("dirProv");
-				
-				SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-				Session session = factoriaSession.openSession();
-				
-				Proveedor prov = (Proveedor) session.find(Proveedor.class, id);
-				prov.setnom_prov(nom);
-				prov.settel_prov(tel);
-				prov.setdir_prov(dir);
-				ProveedorDAO dao = new ProveedorDAO();
-				dao.guardarCambios(prov);
-				
-				session.close();
+
+				Proveedor prov = new Proveedor(
+					request.getParameter("nomProv"),
+					request.getParameter("telProv"),
+					request.getParameter("dirProv")
+				);
+				prov.setid_prov(Integer.parseInt(request.getParameter("idProv")));
 			
+				//ProveedorDAOJPAImpl dao = new ProveedorDAOJPAImpl();
+				servicioProv.guardarCambios(prov);
+				
 				return "MostrarProveedores.do";
 	}
 

@@ -39,13 +39,13 @@ public class Categoria
 	@JoinColumn(name="id_cat") //ESTA ETIQUETA FUNCIONA CON ESTA LISTA CON EL CAMPO DE ESTA TABLA...
 	private List<Libro>listaDeLibros;
 	
-//	public Categoria(int ID, String Categoria) {
-//		//super();
-//		this.id_cat=ID;
-//		this.nom_cat=Categoria;
-//	}
-//	
-//	
+	public Categoria(String Categoria) {
+		//super();
+		
+		this.nom_cat=Categoria;
+	}
+	
+	
 
 	public Categoria() {
 	

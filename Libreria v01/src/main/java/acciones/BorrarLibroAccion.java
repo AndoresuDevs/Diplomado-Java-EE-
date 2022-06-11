@@ -7,23 +7,26 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import beans.Libro;
+import dao.CategoriaDAO;
+import dao.DAOAbstractFactory;
+import dao.DAOFactory;
 import dao.LibroDAO;
+import dao.LibroDAOJPAImpl;
 import javaEEJDBC.DataBaseException;
 import javaEEJDBC.DataBaseHelperHibernate;
 
 public class BorrarLibroAccion extends Accion  {
 
+	
+	DAOFactory factoria = DAOAbstractFactory.getInstance() ;
+	LibroDAO libroDAO= factoria.getLibroDAO();
+	
+	
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-		System.out.println("ACT BORRAR LIBRO");
-		int id = Integer.parseInt(request.getParameter("id"));
-		
-		LibroDAO DAOLib = new LibroDAO();
-		
-		Libro l = DAOLib.buscarLibro(id);
-		DAOLib.BorrarLibro(l);
+		//LibroDAOJPAImpl DAOLib = new LibroDAOJPAImpl();		
+		//DAOLib.borrar(DAOLib.buscarPorClave(Integer.parseInt(request.getParameter("id"))));
+		libroDAO.borrar(libroDAO.buscarPorClave(Integer.parseInt(request.getParameter("id"))));
 		return "MostrarLibros.do";
 	}
 

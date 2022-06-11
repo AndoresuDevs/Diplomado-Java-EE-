@@ -20,7 +20,7 @@
 	<div class=contenedor>
 	<p class="navegar"><a href="MostrarLibros.do">Volver al Listado de Libros</a></p>
 	<p class="navegar"><a href="FormularioInsertarProveedor.jsp">Insertar Nuevo Proveedor</a></p>
-	<h2>Lista de libros</h2>
+	<h2>Lista de Proveedores</h2>
 
 	<table class="tabla">
 			<thead>

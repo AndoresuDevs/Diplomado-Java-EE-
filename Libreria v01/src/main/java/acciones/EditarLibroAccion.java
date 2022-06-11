@@ -1,31 +1,36 @@
 package acciones;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
 import beans.Libro;
-import javaEEJDBC.DataBaseException;
-import javaEEJDBC.DataBaseHelperHibernate;
+import dao.CategoriaDAO;
+import dao.DAOAbstractFactory;
+import dao.DAOFactory;
+import dao.LibroDAO;
+import dao.LibroDAOJPAImpl;
+
 
 public class EditarLibroAccion extends Accion{
+	
+	DAOFactory factoria = DAOAbstractFactory.getInstance() ;
+	CategoriaDAO categoriaDAO = factoria.getCategoriaDAO();
+	LibroDAO libroDAO= factoria.getLibroDAO();
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
-		int id = Integer.parseInt(request.getParameter("id_lib"));
-		String StrISBN = request.getParameter("ISBNLibro");
-		String StrTitulo = request.getParameter("nomLibro");
-		String Cat = request.getParameter("catLibro");
-		String Pre = request.getParameter("preLibro");
-	
+		Libro lib = new Libro(
+				request.getParameter("ISBNLibro"),
+				request.getParameter("nomLibro"),
+				Integer.parseInt(request.getParameter("catLibro")),
+				Float.parseFloat(request.getParameter("preLibro")));
+		lib.setnum_lib(Integer.parseInt(request.getParameter("id_lib")));
 		
 		
+		//new LibroDAOJPAImpl().guardarCambios(lib);
+		libroDAO.guardarCambios(lib);
 		
 		return "MostrarLibros.do";
 	}

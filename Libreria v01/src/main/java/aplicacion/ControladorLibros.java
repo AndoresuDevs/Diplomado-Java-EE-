@@ -16,17 +16,11 @@ import acciones.MostrarLibrosAccion;
 //@WebServlet("/ControladorLibros")// ESTOS SON ANOTACIONES
 public class ControladorLibros extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-         
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+        
     public ControladorLibros() {
         super();
-        // TODO Auto-generated constructor stub
     }
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException 
 	{
 		RequestDispatcher despachador = null;
@@ -41,6 +35,7 @@ public class ControladorLibros extends HttpServlet {
 			if(request.getParameter("categoria")==null|| request.getParameter("categoria").equals("Seleccionar")) {
 				accion = new MostrarLibrosAccion();   
 			}else {
+				System.out.println("ENTRO EL FILTRO POR CATEGORIAS");
 				accion = new FiltrarPorCategoriaAccion();
 			}
 		}else {
