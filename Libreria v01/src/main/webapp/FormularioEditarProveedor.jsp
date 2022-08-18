@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<%@page import="java.sql.SQLException" %>
 <%@page import="beans.Proveedor"%>
-<%@page import="dao.ProveedorDAOJPAImpl"%>
-<%@page import="dao.DAOFactory"%>
-<%@page import="dao.DAOAbstractFactory"%>
-<%@page import="dao.ProveedorDAO"%>
 <%@page import="servicios.ServicioProveedoresImpl"%>
 <%@page import="servicios.ServicioProveedores"%>
 
@@ -14,7 +9,6 @@
 	<%
 		ServicioProveedores servicioProv = new ServicioProveedoresImpl();
 		Proveedor p = servicioProv.buscarPorClave(Integer.parseInt(request.getParameter("id"))); 
-	//Proveedor p = new ProveedorDAOJPAImpl().buscarPorClave(Integer.parseInt(request.getParameter("id")));
 	%>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
@@ -26,7 +20,7 @@
 			<h1>Formulario Editar Proveedor</h1>
 			<form action="EditarProveedor.do" method="GET">
 				<p><label class="txt" for="ID">ID:</label><br>
-				<input class="inputs" id="ID" type="text" name="idProv" value="<%=p.getid_prov() %>" /></p>	
+				<input class="inputs" id="ID" type="text" name="idProv" readonly="readonly" value="<%=p.getid_prov() %>" /></p>	
 				
 				<p><label class="txt" for="Nombre">Nombre:</label><br>
 				<input class="inputs" id="Nombre" type="text" name="nomProv" value="<%=p.getnom_prov() %>"/></p>	

@@ -3,7 +3,7 @@
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
-		font-family: 'Montserrat Alternates', sans-serif;
+		
 	}
 	
 	/*Estilos para el encabezado*/
@@ -106,3 +106,7 @@
 		font-size: 18px;
 	}
 	/*Fin de Menù lateral*/
+	
+	
+	/*Inicio del Select (combo box)*/
+	

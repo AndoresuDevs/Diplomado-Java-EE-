@@ -10,9 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import beans.Categoria;
 import javaEEJDBC.JPAHelper;
 
 
+
+@SuppressWarnings("hiding")
 public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements GenericDAO<T, Id> 
 {
 	
@@ -23,7 +26,6 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 	{
 		this.claseDePersitencia=(Class <T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
-	
 	
 	public T buscarPorClave(Id id){
 		
@@ -46,9 +48,6 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 		TypedQuery<T> consulta = null;
 		try {
 			consulta = JPAHelper.createEntityManager().createQuery("SELECT o FROM "+claseDePersitencia.getSimpleName()+" o",claseDePersitencia);
-			//System.out.println("JPA QUERY");
-			
-			//System.out.println("SELECT o FROM "+claseDePersitencia.getSimpleName()+" o" + claseDePersitencia);
 		}catch(PersistenceException e) {
 			e.printStackTrace();
 		}
@@ -56,6 +55,7 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 	}
 	                                               
 	public void borrar(T objeto) {
+		System.out.println("BORRAR JPA");
 		EntityManager manager = JPAHelper.createEntityManager();
 		EntityTransaction tx = null;
 		try {
@@ -96,7 +96,12 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 	public void guardarCambios(T objeto) {
 		EntityManager manager = JPAHelper.createEntityManager();
 		EntityTransaction tx = null;
-	
+		if(claseDePersitencia.getSimpleName().equals("Categoria")) {
+			Categoria c = (Categoria)objeto;
+			System.out.println("CATEGORIA:");
+			System.out.println("ID : "+c.getid_cat());
+			System.out.println("NOM: "+c.getnom_cat());
+		}
 		try {
 			tx = manager.getTransaction();
 			tx.begin();
@@ -109,18 +114,5 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 			manager.close();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

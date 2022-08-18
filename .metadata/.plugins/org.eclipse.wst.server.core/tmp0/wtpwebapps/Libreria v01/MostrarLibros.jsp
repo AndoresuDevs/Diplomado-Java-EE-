@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<%@page import="javaEEJDBC.DataBaseException"%>
-<%@page import ="java.util.List"%>
-<%@page import ="java.util.ArrayList"%>
+
 <%@page import="beans.Libro"%>
 <%@page import="beans.Categoria"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <html lang="es">
 <head>
@@ -37,28 +35,22 @@
 	<div class=contenedor>
 		<h2>Lista de libros</h2>  
 		<br>
-		<a class="agregar" href="FormularioInsertarLibro.jsp">Insertar Nuevo Libro</a>
-		
-		<label class="icon-icon-list-add" for="btn-menu"></label>
-		
-		<form action="ControladorLibros.do" method="GET">
-			<br><label>Categorias disonibles: </label>
-			<select name="categoria">
-			<option value="Seleccionar">Seleccionar</option>
-			<c:forEach var="cat" items="${ListaDeCategorias}">
-				<option value ="${cat.getid_cat()}">${cat.getnom_cat()}</option>
-			</c:forEach>		
-			</select>
-			<input type="submit" value="Filtrar" /> 
+		<a class="agregar" href="FormularioInsertarLibro.do">Insertar Nuevo Libro</a>
+
+		<form action="ControladorLibros	.do" method="GET">
+			<br><h4>Categorias disonibles: </h4>
+			<div class="content-select">
+				<select name="categoria">
+					<option value="Seleccionar">Todas</option>
+					<c:forEach var="cat" items="${ListaDeCategorias}">
+						<option value ="${cat.getid_cat()}">${cat.getnom_cat()}</option>
+					</c:forEach>		
+				</select>
+				<input class="btn-filtrar" type="submit" value="Filtrar" /> 
+			</div>
+			<br>
 		</form>
-		
-		
-	
-	
-	
-	
-	<br><br> 
-	
+		<br><br> 
 		<table class="tabla">
 			<thead>
 				<tr>
@@ -91,29 +83,17 @@
 		</table>
 	</div>
 	<br><br>
-	
-	
-	
-	
-	
 	<input type="checkbox" id="btn-menu">
 	<div class="container-menu">
 		<div class="cont-menu">
 			<nav>
+				<a href="MostrarLibros.do">Libros</a>
 				<a href="MostrarProveedores.do">Proveedores</a>
 				<a href="MostrarCategorias.do">Categorias</a>
-				<a href="#">Suscribirse</a>
-				
+				<a href="#">Proximamente</a>
 			</nav>
 			<label class="icon-cancel-circled" for="btn-menu"></label>
 		</div>
 	</div>
-	
-	
-	
 </body>
 </html>
-
-
-
-

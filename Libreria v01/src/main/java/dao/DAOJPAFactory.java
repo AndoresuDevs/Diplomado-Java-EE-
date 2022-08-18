@@ -2,11 +2,14 @@ package dao;
 
 public class DAOJPAFactory implements DAOFactory
 {
+	
+	@Override
 	public CategoriaDAO getCategoriaDAO() {
 		return new CategoriaDAOJPAImpl();
 		
 	}
 	
+	@Override
 	public LibroDAO getLibroDAO() {
 		return new LibroDAOJPAImpl();
 	}

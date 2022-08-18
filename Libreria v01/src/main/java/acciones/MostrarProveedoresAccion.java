@@ -1,16 +1,7 @@
 package acciones;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import beans.Categoria;
-import beans.Libro;
-import beans.Proveedor;
-import dao.ProveedorDAO;
-import dao.ProveedorDAOJPAImpl;
-import javaEEJDBC.DataBaseException;
 import servicios.ServicioProveedores;
 import servicios.ServicioProveedoresImpl;
 
@@ -21,11 +12,11 @@ public class MostrarProveedoresAccion extends Accion{
 		try {
 			ServicioProveedores servicioProv = new ServicioProveedoresImpl();
 			request.setAttribute("ListaDeProveedores", servicioProv.buscarTodos());
+			return "MostrarProveedores.jsp";
 		}catch(Exception e) {
 			e.printStackTrace();
+			return "Errores.jsp?motivo="+e.getMessage();
 		}
-		
-		return "MostrarProveedores.jsp";
 	}
 
 }

@@ -10,7 +10,7 @@ import dao.ProveedorDAO;
 public class ServicioProveedoresImpl implements ServicioProveedores {
 	private ProveedorDAO provDAO=null;
 	
-	public ServicioProveedoresImpl() {
+	public ServicioProveedoresImpl() { 
 		DAOFactory factoria = DAOAbstractFactory.getInstance() ;
 		this.provDAO=factoria.getProveedorDao();
 	}

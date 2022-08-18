@@ -3,18 +3,15 @@ package dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Id;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
-
 import beans.Libro;
 import javaEEJDBC.JPAHelper;
 
 public class LibroDAOJPAImpl extends GenericDAOJPAImpl<Libro, Integer> implements LibroDAO
 {
-	
+
+	@Override
 	public List<Libro> buscarPorCategoria(int idCat)
 	{
 		EntityManager em = JPAHelper.createEntityManager();

@@ -2,30 +2,24 @@ package acciones;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import beans.Libro;
-import dao.CategoriaDAO;
-import dao.CategoriaDAOJPAImpl;
-import dao.DAOAbstractFactory;
-import dao.DAOFactory;
-import dao.LibroDAO;
-import dao.LibroDAOJPAImpl;
+import servicios.ServicioCategorias;
+import servicios.ServicioCategoriasImpl;
+import servicios.ServicioLibros;
+import servicios.ServicioLibrosImpl;
 
 public class FiltrarPorCategoriaAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		
-		DAOFactory factoria = DAOAbstractFactory.getInstance() ;
-		CategoriaDAO categoriaDAO = factoria.getCategoriaDAO();
-		LibroDAO libroDAO= factoria.getLibroDAO();
-		
 		try {
-			request.setAttribute("ListaDeLibros", libroDAO.buscarPorCategoria(Integer.parseInt(request.getParameter("categoria"))));
-			request.setAttribute("ListaDeCategorias", categoriaDAO.buscarTodos());
-		} catch (Exception e) {
+			ServicioLibros servicioLibros = new ServicioLibrosImpl();
+			ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
+			request.setAttribute("ListaDeLibros", servicioLibros.buscarPorCategoria(Integer.parseInt(request.getParameter("categoria"))));
+			request.setAttribute("ListaDeCategorias", servicioCategorias.buscarTodos()); //CAMBIAR POR SERV CATEGORIA
+			return "MostrarLibros.jsp";
+		}catch(Exception e) {
 			e.printStackTrace();
- 		}
-		return "MostrarLibros.jsp";
+			return "Errores.jsp?motivo="+e.getMessage();
+		}
 	}
 
 }

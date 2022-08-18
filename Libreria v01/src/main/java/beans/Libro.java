@@ -1,32 +1,12 @@
 package beans;
 
-import java.io.File;
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PersistenceException;
 import javax.persistence.Table;
-import javax.persistence.TypedQuery;
-
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
-
-import javaEEJDBC.DataBaseException;
-import javaEEJDBC.DataBaseHelperHibernate;
-import javaEEJDBC.JPAHelper;
-
 //ANOTACIONES QUE LEE EL FRAMEWORK HIBERNATE
 
 @Entity
@@ -44,7 +24,6 @@ public class Libro {
 	
 	
 	public Libro(String ISBN, String titulo, int categoria, float precio) {
-		
 		isbn_lib = ISBN;
 		tit_lib = titulo;
 		cat_lib = categoria;
@@ -95,95 +74,4 @@ public class Libro {
 	public void setpre_lib(float Precio) {
 		this.pre_lib = Precio;
 	}
-	
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	
-	
-	
-	
-	
 }
-	//METODOS CON HIBERNATE HELPER
-	/*
-	public static List<Integer> buscarLasCategorias() throws DataBaseException{
-		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		//CONSULTA SQL ES EN STRING, CONSULTA HQL ES EN FORMATO QUERY
-		String consulta= "SELECT DISTINCT libro.cat_lib FROM Libro libro";
-		List <Integer>ListaDeCategorias=session.createQuery(consulta).list();
-		session.close();
-		return ListaDeCategorias;
-	}
-	
-	public void insertar (){
-		imprimirEnConsola();
-		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		session.beginTransaction();
-		session.saveOrUpdate(this);
-		session.getTransaction().commit();
-		session.close();	
-	}
-	
-	public static List<Libro> buscarTodos()throws DataBaseException {
-		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		List<Libro>ListaDeLibros = session.createQuery("from Libro libro").list();
-		session.close();
-		return ListaDeLibros;
-	}
-	
-	public Libro buscarLibro(int ID) throws DataBaseException {
-		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		Libro libro = (Libro)session.get(Libro.class, ID);
-		session.close();
-		return libro;
-	}
-	
-	public void BorrarLibro(){
-		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		session.beginTransaction();
-		session.delete(this);
-		session.getTransaction().commit();
-		session.close();		
-	}
-	
-	
-
-	public static List<Libro> buscarPorCategoria(int cat) throws DataBaseException {
-
-		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
-		Session session = factoriaSession.openSession();
-		Query consulta = session.createQuery("FROM Libro libro WHERE libro.cat_lib=:categoria");
-		consulta.setParameter("categoria", cat);
-		List<Libro>ListaDeLibros=consulta.list();
-		session.close();
-		return ListaDeLibros;
-		
-		
-	}
-	
-	
-	private void imprimirEnConsola() {
-		System.out.println("LIBRO EN JAVA BEAN:");
-		System.out.println("NUM: "+num_lib);
-		System.out.println("ISBN: "+isbn_lib);
-		System.out.println("TIT: "+tit_lib);
-		System.out.println("PRE:"+pre_lib);
-		System.out.println("CAT: "+cat_lib);
-		System.out.println("FIN DEL LIBRO");
-	}
-	
-	
-	
-	
-} */

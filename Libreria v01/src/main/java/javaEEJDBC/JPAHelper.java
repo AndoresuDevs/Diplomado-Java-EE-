@@ -10,6 +10,5 @@ public class JPAHelper {
 	public static EntityManager createEntityManager()
 	{
 		return emf.createEntityManager();
-		
 	}
 }    

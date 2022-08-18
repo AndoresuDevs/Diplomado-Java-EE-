@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<%@page import="beans.Categoria"%>
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
 <html lang="es">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
@@ -18,8 +22,20 @@
 				<input class="inputs" id="Titulo" type="text" name="nomLibro"/></p>
 				
 				<p><label class="txt" for="Categoria">Categoria: </label><br>
-				<input class="inputs" id="Categoria" type="text" name="catLibro"/></p>
 				
+				
+				
+				<div class="content-select">
+				<select name="catLibro">
+					<c:forEach var="cat" items="${ListaDeCategorias}">
+						<option value ="${cat.getid_cat()}">${cat.getnom_cat()}</option>
+					</c:forEach>
+				</select>
+				<i></i>
+				</div>
+
+					
+					
 				<p><label class="txt" for="Precio">Precio: </label><br>
 				<input class="inputs" id="Precio" type="text" name="preLibro"/></p>
 				

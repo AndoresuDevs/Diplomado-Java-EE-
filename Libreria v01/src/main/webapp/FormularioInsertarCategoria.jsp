@@ -10,17 +10,14 @@
 	<body background="img/formulario.jpg">
 		<div class="formulario">
 			<h1>Formulario Alta Categoria</h1>
-			<form action="InsertarCategoria.do" method="GET">
-			
-				<p><label class="txt" for="ID">ID:</label><br>
-				<input class="inputs" id="ID" type="text" name="idCat"/></p>	
+			<form action="InsertarCategoria.do" method="GET">	
 						
 				<p><label class="txt" for="Categoria">Categoria:</label><br>
 				<input class="inputs" id="Categoria" type="text" name="nomCat"/></p>
 			
 				<input class="boton"  type="submit" value="Insertar" name="insertar"><br>
 				
-				<p class="navegar"><a href="MostrarProveedores.do">Volver al Listado de Proveedores</a></p>
+				<p class="navegar"><a href="MostrarCategorias.do">Volver al Listado de Categorias</a></p>
 					
 			</form>
 		</div>

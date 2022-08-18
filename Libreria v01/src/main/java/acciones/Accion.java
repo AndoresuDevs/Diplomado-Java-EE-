@@ -13,7 +13,7 @@ public abstract class Accion {
 		Accion accion = null;
 		try 
 		{
-			String text = Accion.class.getPackage()+"."+tipo+"Accion";
+			String text = Accion.class.getPackage()+"."+tipo+"Accion";  
 			accion = (Accion) Class.forName(text.substring(8,text.length())).newInstance();
 		} catch (InstantiationException  | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();

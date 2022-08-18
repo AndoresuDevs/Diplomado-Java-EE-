@@ -2,14 +2,7 @@ package dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceException;
-import javax.persistence.TypedQuery;
-
-import beans.Libro;
 import beans.Proveedor;
-import javaEEJDBC.JPAHelper;
 
 public interface ProveedorDAO {
 	

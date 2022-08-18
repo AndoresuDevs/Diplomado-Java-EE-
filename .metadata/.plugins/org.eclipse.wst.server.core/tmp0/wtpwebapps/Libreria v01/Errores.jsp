@@ -8,16 +8,16 @@
 		<link rel="stylesheet" href="css/formularios.css">
 	</head>
 	<body background="img/formulario.jpg">
-	
 		<% String motivo= request.getParameter("motivo"); %>
 		<div class=formulario>
 		<h1>El error se solucionará una vez que nuestro colaborador termine 
 		su hamburguesa</h1>
-		<h4><%=motivo%></h4>
+		<br>
+		<p><%=motivo%></p>
 		<br>
 		<img src="img/error2.jpg" width="340px"/>
-		<br>
-		<a href="MostrarLibros.jsp">Reiniciar</a>
+		<br><br>
+		<a href="MostrarLibros.jsp" >Reiniciar</a>
 		</div>
 	</body>
 </html>

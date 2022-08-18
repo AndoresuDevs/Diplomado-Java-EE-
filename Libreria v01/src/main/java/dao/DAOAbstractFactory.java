@@ -1,18 +1,44 @@
 package dao;
 
+import java.io.IOException;
+import java.util.Properties;
+
 public class DAOAbstractFactory 
 {
-	//AGREGAR EL JDBC PARA QUE SE HAGA EL SWITCHEO
+	
 	public static DAOFactory getInstance() 
 	{
-		String tipo = "JPA";
-		if(tipo.equals("Hibernate")) {
-			//new DAOHibernateFactory() 
-			return null;
-		}
-		else
+		Properties propiedades= new Properties();
+		DAOFactory dao = null;
+		try 
 		{
-			return new DAOJPAFactory();
+			propiedades.load(DAOAbstractFactory.class.getResourceAsStream("libreria.properties"));
+			String tipo = propiedades.getProperty("tipo");
+			
+			if(tipo.equals("JDBC")) 
+			{
+				System.out.println("ENTRO JDBC FACTORY");
+				dao =  new DAOJDBCFactory();
+			}
+			else if(tipo.equals("JPA")) 
+			{
+				System.out.println("ENTRO JPA FACTORY");
+				dao =  new DAOJPAFactory();
+			} 
+			else 
+			{
+				System.out.println("ENTRO HIBERNATE FACTORY");
+				dao = new DAOHibernateFactory();
+			} 
+			
 		}
+		catch(IOException e) 
+		{
+			System.out.println("ERROR EN DAO ABSTRACT FACTORY: "+e.getMessage());
+		}
+		return dao;
+		
+		
 	}
 }
+ 

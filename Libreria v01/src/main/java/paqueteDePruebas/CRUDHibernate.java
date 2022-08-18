@@ -18,20 +18,10 @@ import beans.Proveedor;
 public class CRUDHibernate {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(Prueba.class.getPackage().toString());
-		
 		CRUDHibernate hib = new CRUDHibernate();
-		//hib.insertar();
-		
-		
-		System.out.println("\nBUSCAR TODOS");
 		for(Libro L:hib.buscarTodos()) {
-			System.out.println(L.getnum_lib()+"\t\t"+L.getisbn_lib()+"\t\t"+L.gettit_lib()+"\t\t"+L.getCategoria().getnom_cat()+"\t\t"+L.getpre_lib());
-		
+			
 		}
-		
-
 	}
 
 	public List<Libro>  buscarTodos() 

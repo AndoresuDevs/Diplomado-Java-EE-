@@ -31,8 +31,6 @@ public class DataBaseHelper<T> extends Libro{
 	
 	public DataBaseHelper() throws DataBaseException{
 		log.setLevel(Level.DEBUG);
-		//File f = new File(this.);
-		//URI fc = f.toURI();
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL,USUARIO,CLAVE);
@@ -50,12 +48,10 @@ public class DataBaseHelper<T> extends Libro{
 	}
 
 	//EL THROWS RETORNA EL ERROR A DONDE FUE LLAMADO, EL TRY CATCH USUALMENTE IMPRIME LA E.PRINTSTACKTRACE EN LA CONSOLA
-	public int modificarRegistro(String querySQL) throws DataBaseException {
-		int filasAfectadas=0;
-		
+	public void modificarRegistro(String querySQL) throws DataBaseException {
 		try {
 			stm = con.createStatement();
-			filasAfectadas =  stm.executeUpdate(querySQL);
+			stm.executeUpdate(querySQL);
 		} catch (SQLException e) {
 			System.out.println("Error de SQL: "+e.getMessage());
 			throw new DataBaseException("Error de SQL");
@@ -63,7 +59,6 @@ public class DataBaseHelper<T> extends Libro{
 		
 		
 		cerrarObjetos();
-		return filasAfectadas;
 	}
 	
 	public void cerrarObjetos() {
@@ -76,7 +71,7 @@ public class DataBaseHelper<T> extends Libro{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<T> seleccionarRegistros(String query, Class clase) throws DataBaseException
+	public List<T> seleccionarRegistros(String query, Class<T> clase) throws DataBaseException
 	{
 		ResultSet filas=null;
 		List<T>listaDeObjetos=new ArrayList<T>();
@@ -89,10 +84,8 @@ public class DataBaseHelper<T> extends Libro{
 						clase.getName()).getDeclaredConstructor().newInstance();//LUEGO SE TRAE SU 
 																				//CONTRUCTOR Y SE INSTANCIA
 				Method[]metodos=objeto.getClass().getDeclaredMethods();
-				
 				for(int i=0; i<metodos.length;i++) {
 					if(metodos[i].getName().startsWith("set")) {
-						
 						//IF POR SI NUESTOR VALOR ES INTEGER
 						if((metodos[i].getName().substring(3)).equals("num_lib") || 
 							metodos[i].getName().substring(3).equals("cat_lib")|| 
@@ -111,26 +104,26 @@ public class DataBaseHelper<T> extends Libro{
 						{
 							metodos[i].invoke(objeto, filas.getString(metodos[i].getName().substring(3)));
 						}
+					}
 						
-					}else if(objeto.getClass().getName().equals("java.lang.Integer")) { //PROBABLEMENTE NO 
-						//SIRVE ESTE ELSE IF
-						objeto = (T)(""+filas.getInt("cat_lib")); //EFECTIVAMENTE NO SIRVE ESTA VALIDACION
-					}		
+//					else if(objeto.getClass().getName().equals("java.lang.Integer")) { //PROBABLEMENTE NO 
+//						//SIRVE ESTE ELSE IF
+//						objeto = (T)(""+filas.getInt("cat_lib")); //EFECTIVAMENTE NO SIRVE ESTA VALIDACION
+//					}		
 				}
 				listaDeObjetos.add(objeto);
 				
 			}
 		}catch(SQLException|InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			//e.printStackTrace();
-			log.debug("Error en el DataBase Helper: "+e.getMessage());
-			
+			log.debug("Error en el DataBaseHelper: "+e.getMessage());
 			System.out.println("Error al seleccionar registros: "+e.getMessage());
 			throw new DataBaseException("Error al leer registros");
 		}
 		return listaDeObjetos;
 	}
 	
-	public int actualizarRegistro(int id, Libro lib) {
+	public int actualizarLibro(int id, Libro lib) {
 		String SQL ="UPDATE libros SET isbn_lib=?, tit_lib=?, cat_lib=?, pre_lib=? WHERE num_lib=?";
 		int filas=0;
 		try {

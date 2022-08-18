@@ -21,11 +21,10 @@ public class Prueba<T> {
 	
 	public static void main(String[] args) {
 		Prueba<Libro> p = new Prueba<Libro>();
-		
 		System.out.println("TAMAÑO: "+p.buscarTodos().size());
 		
-		Prueba<Categoria>p2 = new Prueba<Categoria>();
-		p2.insertar(new Categoria("Aguacates"));
+//		Prueba<Categoria>p2 = new Prueba<Categoria>();
+//		p2.insertar(new Categoria("Aguacates"));
 
 	}
 	
@@ -33,7 +32,8 @@ public class Prueba<T> {
 		SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();
 		Session session = factoriaSession.openSession();
 		
-		List<T>Lista = session.createQuery("from "+"Categoria"+" objeto").list();
+		@SuppressWarnings("unchecked")
+		List<T>Lista = session.createQuery("from "+claseDePersitencia+" objeto").list();
 		session.close();
 		return Lista;
 	}
@@ -53,6 +53,14 @@ public class Prueba<T> {
 		}finally {
 			manager.close();
 		}
+	}
+
+	public Class<T> getClaseDePersitencia() {
+		return claseDePersitencia;
+	}
+
+	public void setClaseDePersitencia(Class<T> claseDePersitencia) {
+		this.claseDePersitencia = claseDePersitencia;
 	}
 
 }

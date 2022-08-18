@@ -2,8 +2,6 @@ package dao;
 
 import java.util.List;
 
-import javax.persistence.Id;
-
 import beans.Libro;
 
 public interface LibroDAO {

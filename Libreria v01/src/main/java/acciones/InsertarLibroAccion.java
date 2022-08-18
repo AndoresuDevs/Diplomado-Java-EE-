@@ -2,40 +2,26 @@
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import beans.Libro;
-import dao.CategoriaDAO;
-import dao.DAOAbstractFactory;
-import dao.DAOFactory;
-import dao.LibroDAO;
-import dao.LibroDAOJPAImpl;
-import javaEEJDBC.DataBaseException;
+import servicios.ServicioLibros;
+import servicios.ServicioLibrosImpl;
 
 public class InsertarLibroAccion extends Accion{
-	
-	DAOFactory factoria = DAOAbstractFactory.getInstance() ;
-	CategoriaDAO categoriaDAO = factoria.getCategoriaDAO();
-	LibroDAO libroDAO= factoria.getLibroDAO();
-	
-
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-//		new LibroDAOJPAImpl().insertar(new Libro(
-//				request.getParameter("ISBN"), 
-//				request.getParameter("nomLibro"), 
-//				Integer.parseInt(request.getParameter("catLibro")), 
-//				Float.parseFloat(request.getParameter("preLibro")))
-//				);
-		
-		libroDAO.insertar(new Libro(
-		request.getParameter("ISBN"), 
-		request.getParameter("nomLibro"), 
-		Integer.parseInt(request.getParameter("catLibro")), 
-		Float.parseFloat(request.getParameter("preLibro")))
-		);
-			 
-		
-		return "MostrarLibros.do";
+		try {
+			ServicioLibros servicio = new ServicioLibrosImpl();
+			servicio.insertar(new Libro(
+					request.getParameter("ISBN"), 
+					request.getParameter("nomLibro"), 
+					Integer.parseInt(request.getParameter("catLibro")), 
+					Float.parseFloat(request.getParameter("preLibro")))
+					);
+			return "MostrarLibros.do";
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "Errores.jsp?motivo="+e.getMessage();
+		}
 	}
 
 }
