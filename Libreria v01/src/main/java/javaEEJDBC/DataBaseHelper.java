@@ -104,18 +104,12 @@ public class DataBaseHelper<T> extends Libro{
 						{
 							metodos[i].invoke(objeto, filas.getString(metodos[i].getName().substring(3)));
 						}
-					}
-						
-//					else if(objeto.getClass().getName().equals("java.lang.Integer")) { //PROBABLEMENTE NO 
-//						//SIRVE ESTE ELSE IF
-//						objeto = (T)(""+filas.getInt("cat_lib")); //EFECTIVAMENTE NO SIRVE ESTA VALIDACION
-//					}		
+					}	
 				}
 				listaDeObjetos.add(objeto);
 				
 			}
 		}catch(SQLException|InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-			//e.printStackTrace();
 			log.debug("Error en el DataBaseHelper: "+e.getMessage());
 			System.out.println("Error al seleccionar registros: "+e.getMessage());
 			throw new DataBaseException("Error al leer registros");
