@@ -2,10 +2,8 @@ package acciones;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import beans.Libro;
 import servicios.ServicioLibros;
-import servicios.ServicioLibrosImpl;
 
 
 public class EditarLibroAccion extends Accion{
@@ -13,7 +11,7 @@ public class EditarLibroAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			ServicioLibros servicio = new ServicioLibrosImpl(); 
+			ServicioLibros servicio = (ServicioLibros) getBean("ServicioLibros",request);
 			Libro lib = new Libro(
 					request.getParameter("ISBNLibro"),
 					request.getParameter("nomLibro"),

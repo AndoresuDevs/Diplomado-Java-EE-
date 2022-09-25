@@ -2,9 +2,7 @@ package acciones;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import servicios.ServicioCategorias;
-import servicios.ServicioCategoriasImpl;
 
 public class BorrarCategoriaAccion extends Accion{
 
@@ -12,7 +10,7 @@ public class BorrarCategoriaAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		
 		try {
-			ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
+			ServicioCategorias servicioCategorias = (ServicioCategorias) getBean("ServicioCategorias", request);
 			servicioCategorias.borrar(servicioCategorias.buscarPorClave(Integer.parseInt(request.getParameter("id"))));
 			return "MostrarCategorias.do";
 		}catch(Exception e) {

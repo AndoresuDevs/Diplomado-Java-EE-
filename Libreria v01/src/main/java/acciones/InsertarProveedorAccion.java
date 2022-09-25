@@ -5,14 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Proveedor;
 import servicios.ServicioProveedores;
-import servicios.ServicioProveedoresImpl;
 
 public class InsertarProveedorAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			ServicioProveedores servicioProv = new ServicioProveedoresImpl();
+			ServicioProveedores servicioProv = (ServicioProveedores) getBean("ServicioProveedores", request);
 			servicioProv.insertar( new Proveedor(
 					request.getParameter("nomProv"),
 					request.getParameter("telProv"),

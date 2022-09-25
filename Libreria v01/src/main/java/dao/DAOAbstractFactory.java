@@ -3,6 +3,10 @@ package dao;
 import java.io.IOException;
 import java.util.Properties;
 
+import dao.hibernate.DAOHibernateFactory;
+import dao.jdbc.DAOJDBCFactory;
+import dao.jpa.DAOJPAFactory;
+
 public class DAOAbstractFactory 
 {
 	

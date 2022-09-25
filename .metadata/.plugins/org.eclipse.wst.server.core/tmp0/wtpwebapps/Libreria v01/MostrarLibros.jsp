@@ -30,8 +30,6 @@
 		</div>
 	</header>
 	
-
-
 	<div class=contenedor>
 		<h2>Lista de libros</h2>  
 		<br>

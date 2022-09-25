@@ -4,13 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import beans.Libro;
 import servicios.ServicioLibros;
-import servicios.ServicioLibrosImpl;
 
 public class InsertarLibroAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			ServicioLibros servicio = new ServicioLibrosImpl();
+			ServicioLibros servicio = (ServicioLibros) getBean("ServicioLibros", request);
 			servicio.insertar(new Libro(
 					request.getParameter("ISBN"), 
 					request.getParameter("nomLibro"), 

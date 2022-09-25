@@ -2,55 +2,88 @@ package servicios;
 
 import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+import acciones.Accion;
 import beans.Libro;
+import dao.CategoriaDAO;
 import dao.DAOAbstractFactory;
 import dao.DAOFactory;
 import dao.LibroDAO;
 
 public class ServicioLibrosImpl implements ServicioLibros{
 	
-	private LibroDAO libroDao = null;
+	private LibroDAO libroDAO = null;
 	
-	public ServicioLibrosImpl() {
-		DAOFactory factoria = DAOAbstractFactory.getInstance() ;
-		this.libroDao= factoria.getLibroDAO();
-	}
+//	public ServicioLibrosImpl() {
+//		ApplicationContext factoria = new FileSystemXmlApplicationContext("classpath*:/contextoAplicacion.xml");
+//		libroDAO = (LibroDAO) factoria.getBean("libroDAO");
+//	}
 
 	@Override
 	public void insertar(Libro libro) {
-		libroDao.insertar(libro);
-		
+		libroDAO.insertar(libro);
 	}
 
 	@Override
 	public List<Libro> buscarTodos() 
 	{
-		return libroDao.buscarTodos();	
+		return libroDAO.buscarTodos();	
 	}
 
 	@Override
 	public void borrar(Libro libro) 
 	{
-		libroDao.borrar(libro);
+		libroDAO.borrar(libro);
 		
 	}
 
 	@Override
 	public void guardarCambios(Libro lib) 
 	{
-		libroDao.guardarCambios(lib);
+		libroDAO.guardarCambios(lib);
 	}
 
 	@Override
 	public Libro buscarPorClave(Integer id) 
 	{
-		return libroDao.buscarPorClave(id);
+		return libroDAO.buscarPorClave(id);
 	}
 
 	@Override
 	public List<Libro> buscarPorCategoria(int idCat) 
 	{
-		return libroDao.buscarPorCategoria(idCat);
+		return libroDAO.buscarPorCategoria(idCat);
 	}
+
+	
+	//nuevos metodos
+	
+	@Override
+	public LibroDAO getLibroDAO() {
+		return libroDAO;
+	}
+
+	@Override
+	public void setLibroDAO(LibroDAO libro) {
+		this.libroDAO=libro;
+	}
+
+	@Override
+	public CategoriaDAO getCategoriaDAO() {
+		
+		return null;
+	}
+
+	@Override
+	public void setCategoriaDAO(CategoriaDAO categoria) {
+	
+		
+	}
+	
+
+
 
 }

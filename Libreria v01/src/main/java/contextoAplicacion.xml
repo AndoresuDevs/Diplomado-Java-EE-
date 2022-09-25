@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- <bean id="MensajeHTML" class="paqueteDePruebas.MensajeHTML"></bean> -->	
+	<!-- <bean id="MensajePlano" class="paqueteDePruebas.MensajePlano"></bean> -->
+	
+	<bean id="LibroDAO" class="dao.jpa.LibroDAOJPAImpl"></bean>
+	<bean id="CategoriaDAO" class="dao.jpa.CategoriaDAOJPAImpl"></bean>
+	<bean id="ProveedorDAO" class="dao.jpa.ProveedorDAOJPAImpl"></bean>
+	
+	<bean id="ServicioLibros" class="servicios.ServicioLibrosImpl">
+		<property name="libroDAO" ref="LibroDAO"></property>
+	</bean>
+	
+	<bean id="ServicioCategorias" class="servicios.ServicioCategoriasImpl">
+		<property name="catDAO" ref="CategoriaDAO"></property>
+	</bean>
+	
+	<bean id="ServicioProveedores" class="servicios.ServicioProveedoresImpl">
+		<property name="provDAO" ref="ProveedorDAO"></property>
+	</bean>
+</beans>
+
+

@@ -47,4 +47,16 @@ public class ServicioProveedoresImpl implements ServicioProveedores {
 		return provDAO.buscarPorClave(id);
 	}
 
+
+	public ProveedorDAO getProvDAO() {
+		return provDAO;
+	}
+
+
+	public void setProvDAO(ProveedorDAO provDAO) {
+		this.provDAO = provDAO;
+	}
+	
+	
+
 }

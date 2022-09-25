@@ -3,14 +3,13 @@ package acciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servicios.ServicioCategorias;
-import servicios.ServicioCategoriasImpl;
 
 public class FormularioInsertarLibroAccion extends Accion {
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			ServicioCategorias servicioCategorias = new ServicioCategoriasImpl();
+			ServicioCategorias servicioCategorias = (ServicioCategorias) getBean("ServicioCategorias", request);
 			request.setAttribute("ListaDeCategorias", servicioCategorias.buscarTodos());
 			return"FormularioInsertarLibro.jsp";
 		}catch(Exception e) {
