@@ -7,21 +7,44 @@ http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 	<!-- <bean id="MensajeHTML" class="paqueteDePruebas.MensajeHTML"></bean> -->	
 	<!-- <bean id="MensajePlano" class="paqueteDePruebas.MensajePlano"></bean> -->
 	
-	<bean id="LibroDAO" class="dao.jpa.LibroDAOJPAImpl"></bean>
-	<bean id="CategoriaDAO" class="dao.jpa.CategoriaDAOJPAImpl"></bean>
-	<bean id="ProveedorDAO" class="dao.jpa.ProveedorDAOJPAImpl"></bean>
+	<bean id="LibroDAO" class="dao.jpa.LibroDAOJPAImpl">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	<bean id="CategoriaDAO" class="dao.jpa.CategoriaDAOJPAImpl">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	<bean id="ProveedorDAO" class="dao.jpa.ProveedorDAOJPAImpl">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
 	
 	<bean id="ServicioLibros" class="servicios.ServicioLibrosImpl">
 		<property name="libroDAO" ref="LibroDAO"></property>
 	</bean>
-	
 	<bean id="ServicioCategorias" class="servicios.ServicioCategoriasImpl">
 		<property name="catDAO" ref="CategoriaDAO"></property>
 	</bean>
-	
 	<bean id="ServicioProveedores" class="servicios.ServicioProveedoresImpl">
 		<property name="provDAO" ref="ProveedorDAO"></property>
 	</bean>
+	
+	<bean id="fuenteDeDatos" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>	
+		<property name="url" value="jdbc:mysql://localhost/libreria"/>
+		<property name="username" value="JavaEE"/>
+		<property name="password" value="12345"/>
+	</bean>
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="JavaEE"/>
+		<property name="dataSource" ref="fuenteDeDatos"/>
+		<property name="jpaVendorAdapter">
+			<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"/>
+				<property name="showSql" value="true"/>
+			</bean>  
+		</property>
+	</bean>
+	
 </beans>
 
 

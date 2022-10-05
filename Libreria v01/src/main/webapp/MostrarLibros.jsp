@@ -35,7 +35,7 @@
 		<br>
 		<a class="agregar" href="FormularioInsertarLibro.do">Insertar Nuevo Libro</a>
 
-		<form action="ControladorLibros	.do" method="GET">
+		<form action="ControladorLibros.do" method="GET">
 			<br><h4>Categorias disonibles: </h4>
 			<div class="content-select">
 				<select name="categoria">

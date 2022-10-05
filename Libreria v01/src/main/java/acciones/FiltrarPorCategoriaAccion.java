@@ -12,7 +12,7 @@ public class FiltrarPorCategoriaAccion extends Accion{
 			ServicioLibros servicioLibros = (ServicioLibros) getBean("ServicioLibros", request);
 			ServicioCategorias servicioCategorias = (ServicioCategorias) getBean("ServicioCategorias", request);
 			request.setAttribute("ListaDeLibros", servicioLibros.buscarPorCategoria(Integer.parseInt(request.getParameter("categoria"))));
-			request.setAttribute("ListaDeCategorias", servicioCategorias.buscarTodos()); //CAMBIAR POR SERV CATEGORIA
+			request.setAttribute("ListaDeCategorias", servicioCategorias.buscarTodos()); 
 			return "MostrarLibros.jsp";
 		}catch(Exception e) {
 			e.printStackTrace();

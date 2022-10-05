@@ -13,7 +13,4 @@ public interface LibroDAO {
 	public abstract Libro buscarPorClave(Integer id);
 	public abstract List<Libro> buscarPorCategoria(int idCat);
 	
-	
-	
-
 }

@@ -5,22 +5,26 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import org.springframework.orm.jpa.support.JpaDaoSupport;
 
-import beans.Categoria;
 import dao.GenericDAO;
-import javaEEJDBC.JPAHelper;
 
 
 
 @SuppressWarnings("hiding")
-public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements GenericDAO<T, Id> 
+public abstract class GenericDAOJPAImpl <T, Id extends Serializable> extends JpaDaoSupport implements GenericDAO<T, Id> 
 {
 	
 	private Class<T> claseDePersitencia;
+	//private JpaTemplate plantillaJPA;
+	
+	EntityManagerFactory entityManagerFactory;
+	
 	
 	@SuppressWarnings("unchecked")
 	public GenericDAOJPAImpl()
@@ -28,9 +32,15 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 		this.claseDePersitencia=(Class <T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 	
+	public EntityManagerFactory getEntityManagerFactory() {
+		return entityManagerFactory;
+	}
+	
+	
 	public T buscarPorClave(Id id){
 		
-		EntityManager manager = JPAHelper.createEntityManager();
+		System.out.println("BUSCAR POR CLAVE JPA: "+id);
+		EntityManager manager = entityManagerFactory.createEntityManager();
 		T objeto = null;
 		try {
 			objeto = (T) manager.find(claseDePersitencia, id);
@@ -46,10 +56,10 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 	
 	
 	public  List<T> buscarTodos(){
-		System.out.println("ENTRO GEN DAO JPA IMPL BUSCAR TODOS");
+		EntityManager manager = entityManagerFactory.createEntityManager();
 		TypedQuery<T> consulta = null;
 		try {
-			consulta = JPAHelper.createEntityManager().createQuery("SELECT o FROM "+claseDePersitencia.getSimpleName()+" o",claseDePersitencia);
+			consulta = manager.createQuery("SELECT o FROM "+claseDePersitencia.getSimpleName()+" o",claseDePersitencia);
 		}catch(PersistenceException e) {
 			e.printStackTrace();
 		}
@@ -58,7 +68,7 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 	                                               
 	public void borrar(T objeto) {
 		System.out.println("BORRAR JPA");
-		EntityManager manager = JPAHelper.createEntityManager();
+		EntityManager manager = entityManagerFactory.createEntityManager();
 		EntityTransaction tx = null;
 		try {
 			tx=manager.getTransaction();
@@ -78,7 +88,7 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 	
 	
 	public void insertar(T objeto) {
-		EntityManager manager = JPAHelper.createEntityManager();
+		EntityManager manager = entityManagerFactory.createEntityManager();
 		EntityTransaction tx = null;
 	
 		try {
@@ -96,14 +106,8 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 	
 	
 	public void guardarCambios(T objeto) {
-		EntityManager manager = JPAHelper.createEntityManager();
+		EntityManager manager = entityManagerFactory.createEntityManager();
 		EntityTransaction tx = null;
-		if(claseDePersitencia.getSimpleName().equals("Categoria")) {
-			Categoria c = (Categoria)objeto;
-			System.out.println("CATEGORIA:");
-			System.out.println("ID : "+c.getid_cat());
-			System.out.println("NOM: "+c.getnom_cat());
-		}
 		try {
 			tx = manager.getTransaction();
 			tx.begin();

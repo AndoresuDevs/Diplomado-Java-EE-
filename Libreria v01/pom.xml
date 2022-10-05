@@ -101,8 +101,9 @@
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-orm</artifactId>
-	    <version>5.3.20</version>
+	    <version>3.0.7.RELEASE</version>
 	</dependency>
+	<!-- <version>5.3.20</version> -->
 	
 </dependencies>
   <build>

@@ -2,26 +2,16 @@ package servicios;
 
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-
-import acciones.Accion;
+import acciones.MostrarLibrosAccion;
 import beans.Libro;
 import dao.CategoriaDAO;
-import dao.DAOAbstractFactory;
-import dao.DAOFactory;
 import dao.LibroDAO;
+import dao.jpa.LibroDAOJPAImpl;
 
 public class ServicioLibrosImpl implements ServicioLibros{
 	
 	private LibroDAO libroDAO = null;
 	
-//	public ServicioLibrosImpl() {
-//		ApplicationContext factoria = new FileSystemXmlApplicationContext("classpath*:/contextoAplicacion.xml");
-//		libroDAO = (LibroDAO) factoria.getBean("libroDAO");
-//	}
-
 	@Override
 	public void insertar(Libro libro) {
 		libroDAO.insertar(libro);
@@ -49,12 +39,20 @@ public class ServicioLibrosImpl implements ServicioLibros{
 	@Override
 	public Libro buscarPorClave(Integer id) 
 	{
-		return libroDAO.buscarPorClave(id);
+		System.out.println("CLAVE SERV LIB IMPL:"+id);
+		
+		MostrarLibrosAccion mla = new MostrarLibrosAccion();
+		
+		List<Libro> libs =  libroDAO.buscarTodos();
+		
+		//return libroDAO.buscarPorClave(id);
+		return libs.get(id);
 	}
 
 	@Override
 	public List<Libro> buscarPorCategoria(int idCat) 
 	{
+		System.out.println("FILTRO POR CATEGORIA: "+idCat);
 		return libroDAO.buscarPorCategoria(idCat);
 	}
 

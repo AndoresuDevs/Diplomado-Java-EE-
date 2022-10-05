@@ -16,6 +16,7 @@ public class DAOJPAFactory implements DAOFactory
 	
 	@Override
 	public LibroDAO getLibroDAO() {
+		System.out.println("ENTRO EL JPA FACTORY LIBRO DAO");
 		return new LibroDAOJPAImpl();
 	}
 

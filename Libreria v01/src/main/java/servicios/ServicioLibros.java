@@ -9,8 +9,6 @@ import dao.LibroDAO;
 public interface ServicioLibros 
 {
 	
-	
-	
 	public abstract void insertar(Libro libro);
 	public abstract List<Libro> buscarTodos();
 	public abstract void borrar(Libro lib);

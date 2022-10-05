@@ -46,14 +46,16 @@ public class ServicioCategoriasImpl implements ServicioCategorias{
 		return catDAO.buscarPorClave(id);
 	}
 
-
-	public CategoriaDAO getCatDAO() {
+	@Override
+	public CategoriaDAO getcatDAO() {
+		
 		return catDAO;
 	}
 
 
-	public void setCatDAO(CategoriaDAO catDAO) {
-		this.catDAO = catDAO;
+	@Override
+	public void setcatDAO(CategoriaDAO cat) {
+		this.catDAO = cat;
 	}
 	
 	

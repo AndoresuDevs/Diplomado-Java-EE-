@@ -22,6 +22,7 @@ public abstract class GenericDAOJDBCImpl <T, Id extends Serializable> implements
 	
 	
 	public T buscarPorClave(Id id) {
+		System.out.println("BUSCAR POR CLAVE JDBC: "+id);
 		T objeto=null;
 		String query=null;
 		if(claseDePersitencia.getSimpleName().equals("Libro")) {

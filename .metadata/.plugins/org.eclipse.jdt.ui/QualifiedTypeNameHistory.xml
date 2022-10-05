@@ -16,7 +16,6 @@
     <fullyQualifiedTypeName name="javax.persistence.PrimaryKeyJoinColumn"/>
     <fullyQualifiedTypeName name="java.lang.reflect.ParameterizedType"/>
     <fullyQualifiedTypeName name="javaEEJDBC.JPAHelper"/>
-    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
     <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
     <fullyQualifiedTypeName name="javax.persistence.PersistenceException"/>
     <fullyQualifiedTypeName name="javax.persistence.TypedQuery"/>
@@ -32,7 +31,6 @@
     <fullyQualifiedTypeName name="paqueteDePruebas.MensajeFactory"/>
     <fullyQualifiedTypeName name="servicios.ServicioCategoriasImpl"/>
     <fullyQualifiedTypeName name="servicios.ServicioCategorias"/>
-    <fullyQualifiedTypeName name="dao.ProveedorDAO"/>
     <fullyQualifiedTypeName name="servicios.ServicioProveedoresImpl"/>
     <fullyQualifiedTypeName name="dao.GenericDAOHibernateImpl"/>
     <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
@@ -55,9 +53,11 @@
     <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
     <fullyQualifiedTypeName name="org.springframework.context.support.FileSystemXmlApplicationContext"/>
     <fullyQualifiedTypeName name="acciones.Accion"/>
-    <fullyQualifiedTypeName name="dao.LibroDAO"/>
-    <fullyQualifiedTypeName name="dao.CategoriaDAO"/>
     <fullyQualifiedTypeName name="org.springframework.web.context.WebApplicationContext"/>
     <fullyQualifiedTypeName name="org.springframework.web.context.support.WebApplicationContextUtils"/>
     <fullyQualifiedTypeName name="servicios.ServicioProveedores"/>
+    <fullyQualifiedTypeName name="dao.ProveedorDAO"/>
+    <fullyQualifiedTypeName name="dao.CategoriaDAO"/>
+    <fullyQualifiedTypeName name="dao.LibroDAO"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
 </qualifiedTypeNameHistroy>

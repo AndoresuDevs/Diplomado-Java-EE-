@@ -23,6 +23,7 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 	
 	
 	public T buscarPorClave(Id id)  {
+		System.out.println("BUSCAR POR CLAVE HIB: "+id);
 		T objeto = null;
 		try {
 			SessionFactory factoriaSession = DataBaseHelperHibernate.getSessionFactory();

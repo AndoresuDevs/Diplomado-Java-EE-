@@ -3,11 +3,16 @@
 <%@page import="beans.Libro"%>
 <%@page import="servicios.ServicioLibrosImpl"%>
 <%@page import="servicios.ServicioLibros"%>
+<%@page import="acciones.MostrarLibrosAccion"%>
 
 <html lang="es">
 	<% 
-	ServicioLibros servLib = new ServicioLibrosImpl();
-	Libro l = servLib.buscarPorClave(Integer.parseInt(request.getParameter("id"))); 
+		MostrarLibrosAccion mla = new MostrarLibrosAccion();
+		ServicioLibros servicioLibros = (ServicioLibros) mla.getBean("ServicioLibros",request);
+		Libro l = servicioLibros.buscarPorClave(Integer.parseInt(request.getParameter("id"))); 
+		
+		//ServicioLibros servLib = new ServicioLibrosImpl();
+		//Libro l = servLib.buscarPorClave(Integer.parseInt(request.getParameter("id"))); 
 	%>
 	
 	<head>
