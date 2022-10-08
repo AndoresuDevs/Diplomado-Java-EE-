@@ -3,6 +3,9 @@ package paqueteDePruebas;
 import java.io.IOException;
 import java.util.Properties;
 
+import paqueteDePruebas.mensajes.Mensaje;
+import paqueteDePruebas.mensajes.MensajeHTML;
+
 public class MensajeFactory {
 
 	public Mensaje getMensaje() {

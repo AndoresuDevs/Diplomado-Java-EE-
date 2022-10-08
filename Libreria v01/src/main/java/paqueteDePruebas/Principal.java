@@ -3,6 +3,8 @@ package paqueteDePruebas;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import paqueteDePruebas.mensajes.Mensaje;
+
 public class Principal {
 
 	public static void main(String[] args) {

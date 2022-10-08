@@ -68,6 +68,9 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
     <property name="entityManagerFactory" ref="entityManagerFactory" />
 </bean>
 
+<!-- <tx:annotation-driven transaction-manager="myTransactionManager"/> -->
+<jpa:repositories base-package="repositorios"></jpa:repositories>
+
 <context:component-scan base-package="repositorios">
     <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
 </context:component-scan>
