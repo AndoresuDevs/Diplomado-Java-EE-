@@ -12,7 +12,7 @@ import javaEEJDBC.JPAHelper;
 public class LibroDAOJPAImpl extends GenericDAOJPAImpl<Libro, Integer> implements LibroDAO
 {
 
-	@Override
+	
 	public List<Libro> buscarPorCategoria(int idCat)
 	{
 		EntityManager em = JPAHelper.createEntityManager();

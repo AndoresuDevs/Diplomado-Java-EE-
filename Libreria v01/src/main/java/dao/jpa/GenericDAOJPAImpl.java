@@ -10,20 +10,31 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
-import org.springframework.orm.jpa.support.JpaDaoSupport;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.GenericDAO;
-
-
+import repositorios.CategoriaRepository;
+import repositorios.LibroRepository;
+import repositorios.ProveedorRepository;
 
 @SuppressWarnings("hiding")
-public abstract class GenericDAOJPAImpl <T, Id extends Serializable> extends JpaDaoSupport implements GenericDAO<T, Id> 
+public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements GenericDAO<T, Id> 
 {
 	
 	private Class<T> claseDePersitencia;
-	//private JpaTemplate plantillaJPA;
-	
 	EntityManagerFactory entityManagerFactory;
+	
+	@Autowired
+	private LibroRepository repoLib;
+	
+	
+	@Autowired
+	private CategoriaRepository repoCat;
+	
+	@Autowired
+	private ProveedorRepository repoProv;
 	
 	
 	@SuppressWarnings("unchecked")
@@ -36,10 +47,11 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> extends Jpa
 		return entityManagerFactory;
 	}
 	
-	
+	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+		this.entityManagerFactory = entityManagerFactory;
+	}
+
 	public T buscarPorClave(Id id){
-		
-		System.out.println("BUSCAR POR CLAVE JPA: "+id);
 		EntityManager manager = entityManagerFactory.createEntityManager();
 		T objeto = null;
 		try {
@@ -56,14 +68,18 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> extends Jpa
 	
 	
 	public  List<T> buscarTodos(){
-		EntityManager manager = entityManagerFactory.createEntityManager();
-		TypedQuery<T> consulta = null;
-		try {
-			consulta = manager.createQuery("SELECT o FROM "+claseDePersitencia.getSimpleName()+" o",claseDePersitencia);
-		}catch(PersistenceException e) {
-			e.printStackTrace();
+		
+		if(claseDePersitencia.getSimpleName().equals("Libro")) {
+			return (List<T>)repoLib.findAll();
+		}else 
+		if (claseDePersitencia.getSimpleName().equals("Categoria")){
+			return (List<T>)repoCat.findAll();
+		}else {
+			return (List<T>)repoProv.findAll();
 		}
-		return consulta.getResultList();
+		
+		
+		
 	}
 	                                               
 	public void borrar(T objeto) {
