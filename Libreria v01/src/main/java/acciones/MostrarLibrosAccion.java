@@ -21,8 +21,6 @@ public class MostrarLibrosAccion extends Accion{
 			e.printStackTrace();
 			return "Errores.jsp?motivo="+e.getMessage();
 		}
-		
-		
 	}
 
 }

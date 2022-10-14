@@ -26,9 +26,9 @@ public class LibroDAOJPAImpl extends GenericDAOJPAImpl<Libro, Integer> implement
 		{
 			e.printStackTrace();
 		}
-
 		return ListaLibros;
 	}
+	
 	
 	public List<Libro> buscarPorProveedor(int idProv)
 	{

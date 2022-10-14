@@ -6,10 +6,7 @@
 
 
 <html lang="es">
-	<%
-		ServicioProveedores servicioProv = new ServicioProveedoresImpl();
-		Proveedor p = servicioProv.buscarPorClave(Integer.parseInt(request.getParameter("id"))); 
-	%>
+	<% Proveedor p = (Proveedor) request.getAttribute("Proveedor"); %>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
 		<title>Formulario para editar un proveedor</title>

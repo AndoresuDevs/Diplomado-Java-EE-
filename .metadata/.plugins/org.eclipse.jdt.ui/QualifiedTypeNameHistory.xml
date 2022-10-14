@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="dao.CategoriaDAOJPAImpl"/>
-    <fullyQualifiedTypeName name="java.sql.SQLException"/>
-    <fullyQualifiedTypeName name="java.util.Properties"/>
-    <fullyQualifiedTypeName name="paqueteDePruebas.MensajeHTML"/>
-    <fullyQualifiedTypeName name="paqueteDePruebas.MensajePlano"/>
-    <fullyQualifiedTypeName name="paqueteDePruebas.MensajeFactory"/>
-    <fullyQualifiedTypeName name="servicios.ServicioCategoriasImpl"/>
-    <fullyQualifiedTypeName name="servicios.ServicioCategorias"/>
-    <fullyQualifiedTypeName name="servicios.ServicioProveedoresImpl"/>
-    <fullyQualifiedTypeName name="dao.GenericDAOHibernateImpl"/>
     <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
     <fullyQualifiedTypeName name="org.hibernate.Session"/>
     <fullyQualifiedTypeName name="org.hibernate.Query"/>
     <fullyQualifiedTypeName name="javaEEJDBC.DataBaseHelperHibernate"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="javaEEJDBC.DataBaseHelper"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.util.HashtableOfObjectToInt"/>
@@ -30,11 +19,9 @@
     <fullyQualifiedTypeName name="acciones.Accion"/>
     <fullyQualifiedTypeName name="org.springframework.web.context.WebApplicationContext"/>
     <fullyQualifiedTypeName name="org.springframework.web.context.support.WebApplicationContextUtils"/>
-    <fullyQualifiedTypeName name="servicios.ServicioProveedores"/>
     <fullyQualifiedTypeName name="dao.ProveedorDAO"/>
     <fullyQualifiedTypeName name="dao.CategoriaDAO"/>
     <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
-    <fullyQualifiedTypeName name="javax.persistence.Id"/>
     <fullyQualifiedTypeName name="beans.Libro"/>
     <fullyQualifiedTypeName name="dao.LibroDAO"/>
     <fullyQualifiedTypeName name="dao.jpa.LibroDAOJPAImpl"/>
@@ -46,13 +33,10 @@
     <fullyQualifiedTypeName name="org.springframework.orm.jpa.JpaTemplate"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
-    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="repositorios.LibroRepository"/>
     <fullyQualifiedTypeName name="javax.persistence.Column"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.Fetch"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.FetchMode"/>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="org.springframework.data.repository.RepositoryDefinition"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="beans.Categoria"/>
@@ -60,4 +44,20 @@
     <fullyQualifiedTypeName name="repositorios.ProveedorRepository"/>
     <fullyQualifiedTypeName name="paqueteDePruebas.mensajes.MensajeFactory"/>
     <fullyQualifiedTypeName name="paqueteDePruebas.mensajes.MensajeHTML"/>
+    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Propagation"/>
+    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="servicios.ServicioCategorias"/>
+    <fullyQualifiedTypeName name="servicios.ServicioProveedores"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Id"/>
+    <fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.personal.MyAplicationChida.PersonaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
 </qualifiedTypeNameHistroy>

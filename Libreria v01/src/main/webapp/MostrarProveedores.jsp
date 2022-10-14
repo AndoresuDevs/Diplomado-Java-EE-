@@ -55,7 +55,7 @@
 		<td>${prov.gettel_prov()}</td>
 		<td>${prov.getdir_prov()}</td>
 		<td><a class="icon-trash-empty" href="BorrarProveedor.do?id=${prov.getid_prov()}"></a></td>
-		<td><a class="icon-pencil" href="FormularioEditarProveedor.jsp?id=${prov.getid_prov()}"></a></td>
+		<td><a class="icon-pencil" href="FormularioEditarProveedor.do?id=${prov.getid_prov()}"></a></td>
 		</tr>
 		</c:forEach>
 	</tbody>

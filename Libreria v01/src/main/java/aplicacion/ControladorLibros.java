@@ -26,7 +26,8 @@ public class ControladorLibros extends HttpServlet {
 		RequestDispatcher despachador = null;
 		Accion accion = null;
 		String url=request.getServletPath();
-		if(request.getServletPath().equals("/ControladorLibros.do")) 
+		
+		if(request.getServletPath().equals("/ControladorLibros.do"))
 		{
 			if(request.getParameter("categoria")==null|| request.getParameter("categoria").equals("Seleccionar")) {
 				accion = new MostrarLibrosAccion();   
@@ -34,6 +35,7 @@ public class ControladorLibros extends HttpServlet {
 				accion = new FiltrarPorCategoriaAccion();
 			}
 		}else {
+			System.out.println("ACTION: "+url.substring(1,url.length()-3));
 			accion = Accion.getAccion(url.substring(1,url.length()-3));
 		}
 		despachador=request.getRequestDispatcher(accion.ejecutar(request, response));

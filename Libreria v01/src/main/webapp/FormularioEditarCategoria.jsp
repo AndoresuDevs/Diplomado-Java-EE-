@@ -5,10 +5,7 @@
 <%@page import="servicios.ServicioCategorias"%>
 
 <html lang="es">
-	<%
-		ServicioCategorias servCat= new ServicioCategoriasImpl();
-		Categoria c = servCat.buscarPorClave(Integer.parseInt(request.getParameter("id")));
-	%>
+	<% Categoria c = (Categoria) request.getAttribute("Categoria"); %>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
 		<title>Formulario para editar una Categoria</title>

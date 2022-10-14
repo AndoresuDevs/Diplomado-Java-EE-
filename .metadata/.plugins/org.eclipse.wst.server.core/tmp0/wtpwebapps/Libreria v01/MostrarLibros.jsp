@@ -74,7 +74,7 @@
 						</c:forEach>
 						<td>${lib.getpre_lib()}</td>
 						<td><a class="icon-trash-empty" href="BorrarLibro.do?id=${lib.getnum_lib()}"></a></td>
-						<td><a class="icon-pencil" href="FormularioEditarLibro.jsp?id=${lib.getnum_lib()}"></a></td>
+						<td><a class="icon-pencil" href="FormularioEditarLibro.do?id=${lib.getnum_lib()}"></a></td>
 					</tr>
 					</c:forEach>
 			</tbody>

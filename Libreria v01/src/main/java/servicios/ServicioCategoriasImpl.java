@@ -2,33 +2,32 @@ package servicios;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import beans.Categoria;
 import dao.CategoriaDAO;
-import dao.DAOAbstractFactory;
-import dao.DAOFactory;
 
+@Service
 public class ServicioCategoriasImpl implements ServicioCategorias{
 
 	private CategoriaDAO catDAO=null;
 	
-	public ServicioCategoriasImpl() {
-		DAOFactory factoria = DAOAbstractFactory.getInstance();
-		this.catDAO=factoria.getCategoriaDAO();
-	}
-	 
-	
 	@Override
+	@Transactional
 	public void insertar(Categoria categoria) {
 		catDAO.insertar(categoria);
 		
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Categoria> buscarTodos() {
 		return catDAO.buscarTodos();
 	}
 
 	@Override
+	@Transactional
 	public void borrar(Categoria categoria) {
 		System.out.println("ENTRO BORRAR CAT");
 		catDAO.borrar(categoria);
@@ -36,17 +35,19 @@ public class ServicioCategoriasImpl implements ServicioCategorias{
 	}
 
 	@Override
+	@Transactional
 	public void guardarCambios(Categoria categoria) {
-		System.out.println("ENTRO guardar CAT");
 		catDAO.guardarCambios(categoria);
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public Categoria buscarPorClave(Integer id) {
 		return catDAO.buscarPorClave(id);
 	}
 
 	@Override
+	@Transactional
 	public CategoriaDAO getcatDAO() {
 		
 		return catDAO;
@@ -54,6 +55,7 @@ public class ServicioCategoriasImpl implements ServicioCategorias{
 
 
 	@Override
+	@Transactional
 	public void setcatDAO(CategoriaDAO cat) {
 		this.catDAO = cat;
 	}

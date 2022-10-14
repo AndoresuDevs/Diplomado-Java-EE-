@@ -52,7 +52,7 @@
 			<td>${cat.getid_cat()}</td>
 			<td>${cat.getnom_cat()}</td>  
 			<td><a class="icon-trash-empty" href="BorrarCategoria.do?id=${cat.getid_cat()}"></a></td>
-			<td><a class="icon-pencil" href="FormularioEditarCategoria.jsp?id=${cat.getid_cat()}"></a></td>
+			<td><a class="icon-pencil" href="FormularioEditarCategoria.do?id=${cat.getid_cat()}"></a></td>
 			</tr>
 			</c:forEach>
 		</tbody>

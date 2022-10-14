@@ -6,14 +6,7 @@
 <%@page import="acciones.MostrarLibrosAccion"%>
 
 <html lang="es">
-	<% 
-		MostrarLibrosAccion mla = new MostrarLibrosAccion();
-		ServicioLibros servicioLibros = (ServicioLibros) mla.getBean("ServicioLibros",request);
-		Libro l = servicioLibros.buscarPorClave(Integer.parseInt(request.getParameter("id"))); 
-		
-		//ServicioLibros servLib = new ServicioLibrosImpl();
-		//Libro l = servLib.buscarPorClave(Integer.parseInt(request.getParameter("id"))); 
-	%>
+	<%  Libro l = (Libro) request.getAttribute("Libro"); %>
 	
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
@@ -24,6 +17,8 @@
 		<div class="formulario">
 			<h1>Formulario Editar Libro</h1>
 			<form action="EditarLibro.do" method="GET">
+			
+				
 			
 				<p><label class="txt" for="ID">ID:</label><br>
 				<input class="inputs" id="ID" type="text" name="id_lib" readonly="readonly" value="<%=l.getnum_lib() %>"/></p>	

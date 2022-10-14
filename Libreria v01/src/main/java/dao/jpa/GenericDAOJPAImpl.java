@@ -9,10 +9,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
 import javax.persistence.PersistenceException;
-import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import dao.GenericDAO;
 import repositorios.CategoriaRepository;
@@ -29,13 +27,11 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 	@Autowired
 	private LibroRepository repoLib;
 	
-	
 	@Autowired
 	private CategoriaRepository repoCat;
 	
 	@Autowired
 	private ProveedorRepository repoProv;
-	
 	
 	@SuppressWarnings("unchecked")
 	public GenericDAOJPAImpl()
@@ -62,11 +58,10 @@ public abstract class GenericDAOJPAImpl <T, Id extends Serializable> implements 
 			manager.close();
 		}
 		return objeto;
-		
-		
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public  List<T> buscarTodos(){
 		
 		if(claseDePersitencia.getSimpleName().equals("Libro")) {

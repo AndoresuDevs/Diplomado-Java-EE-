@@ -2,39 +2,38 @@ package servicios;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import beans.Proveedor;
-import dao.DAOAbstractFactory;
-import dao.DAOFactory;
 import dao.ProveedorDAO;
 
+@Service
 public class ServicioProveedoresImpl implements ServicioProveedores {
 	private ProveedorDAO provDAO=null;
 	
-	public ServicioProveedoresImpl() { 
-		DAOFactory factoria = DAOAbstractFactory.getInstance() ;
-		this.provDAO=factoria.getProveedorDao();
-	}
-	
-	
 	@Override
-	public void insertar(Proveedor prov) {
-		// TODO Auto-generated method stub
+	@Transactional
+	public void insertar(Proveedor prov) 
+	{
 		provDAO.insertar(prov);
 	}
 
 	@Override
-	public List<Proveedor> buscarTodos() {
-		// TODO Auto-generated method stub
+	@Transactional(readOnly=true)
+	public List<Proveedor> buscarTodos() 
+	{
 		return provDAO.buscarTodos();
 	}
 
 	@Override
-	public void borrar(Proveedor prov) {
-		// TODO Auto-generated method stub
+	@Transactional
+	public void borrar(Proveedor prov) 
+	{
 		provDAO.borrar(prov);
 	}
 
 	@Override
+	@Transactional
 	public void guardarCambios(Proveedor prov) {
 		// TODO Auto-generated method stub
 		provDAO.guardarCambios(prov);
@@ -42,19 +41,24 @@ public class ServicioProveedoresImpl implements ServicioProveedores {
 	}
 
 	@Override
-	public Proveedor buscarPorClave(Integer id) {
-		// TODO Auto-generated method stub
+	@Transactional(readOnly=true)
+	public Proveedor buscarPorClave(Integer id) 
+	{
 		return provDAO.buscarPorClave(id);
 	}
 
 	@Override
-	public ProveedorDAO getprovDAO() {
+	@Transactional
+	public ProveedorDAO getprovDAO() 
+	{
 		return provDAO;
 	}
 
 
 	@Override
-	public void setprovDAO(ProveedorDAO prov) {
+	@Transactional
+	public void setprovDAO(ProveedorDAO prov) 
+	{
 		this.provDAO = prov;
 	}
 	
